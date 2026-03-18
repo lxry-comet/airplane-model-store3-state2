@@ -7,6 +7,7 @@ import React, { Component } from 'react'
 
 import helicopters from '@/json/helicopters.json'
 // import PlanesList from '../PlanesList/PlanesList.jsx'
+import {Filter} from '@/components/Filter/Filter.jsx'
 import PlanesList from '@/components/PlanesList/PlanesList.jsx'
 // import Section from '../Section/Section.jsx'
 import Section from '@/components/Section/Section.jsx'
@@ -48,7 +49,7 @@ export class App extends Component {
 		return (
 			<>
 				{/*//!  Filter */}
-				<div className={css.filterBox}>
+				{/* <div className={css.filterBox}>
 					<button
 						className={css.buttonAllFiltration}
 						type='button'
@@ -72,13 +73,19 @@ export class App extends Component {
 					>
 						Вертольоти
 					</button>
-				</div>
+				</div> */}
+
+				<Filter
+					onAll={this.allFiltration}
+          onPlanes={this.planeFiltration}
+          onHelicopters={this.helicopterFiltration}
+				/>
+
 				<Section 
 					isOn={this.state.isPlain}
 					bgColor={this.state.bgColor}
 				 	title='Магазин моделей літаків'
-					>
-
+				>
 					<PlanesList items={planes} />
 				</Section>
 
@@ -86,8 +93,7 @@ export class App extends Component {
 					isOn={this.state.isHelicopter}
 					bgColor={this.state.bgColor}
 					title='Магазин моделей вертольотів'
-					>
-
+				>
 					<PlanesList items={helicopters} />
 				</Section>
 			</>
