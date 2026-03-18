@@ -3,11 +3,11 @@ import css from "./Section.module.css";
 // import css from "@/components/Section/Section.module.css"; 
 
 
-function Section({ isOn, title, children }) {
+function Section({ isOn, bgColor, title, children }) {
   return (
     <>
     {isOn && 
-    <section>
+    <section style={{backgroundColor: bgColor}}>
       
       {title
         &&

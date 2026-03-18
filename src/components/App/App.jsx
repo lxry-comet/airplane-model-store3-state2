@@ -16,28 +16,32 @@ import css from './App.module.css'
 export class App extends Component {
 	state = {
 		isPlain: false,
-		isHelicopter: false
+		isHelicopter: false,
+		bgColor: 'white',
 	}
 
 	allFiltration = () => {
 		console.log('all')
 		this.setState({
 			isPlain: true,
-			isHelicopter: true
+			isHelicopter: true,
+			bgColor: 'lightgreen'
 		})
 	}
 	planeFiltration = () => {
 		console.log('planeFiltration')
 		this.setState({
 			isPlain: true,
-			isHelicopter: false
+			isHelicopter: false,
+			bgColor: 'yellow'
 		})
 	}
 	helicopterFiltration = () => {
 		console.log('helicopterFiltration')
 		this.setState({
 			isPlain: false,
-			isHelicopter: true
+			isHelicopter: true,
+			bgColor: 'lightblue'
 		})
 	}
 	render() {
@@ -69,14 +73,21 @@ export class App extends Component {
 						Вертольоти
 					</button>
 				</div>
-				<Section isOn={this.state.isPlain} title='Магазин моделей літаків'>
+				<Section 
+					isOn={this.state.isPlain}
+					bgColor={this.state.bgColor}
+				 	title='Магазин моделей літаків'
+					>
+
 					<PlanesList items={planes} />
 				</Section>
 
 				<Section
 					isOn={this.state.isHelicopter}
+					bgColor={this.state.bgColor}
 					title='Магазин моделей вертольотів'
-				>
+					>
+
 					<PlanesList items={helicopters} />
 				</Section>
 			</>
