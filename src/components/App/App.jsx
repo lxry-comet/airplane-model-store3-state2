@@ -3,6 +3,8 @@ import '@/App.css'
 // import planes from '../../json/planes.json'
 import planes from '@/json/planes.json'
 
+import React, { Component } from "react";
+
 import helicopters from '@/json/helicopters.json'
 // import PlanesList from '../PlanesList/PlanesList.jsx'
 import PlanesList from '@/components/PlanesList/PlanesList.jsx'
@@ -11,7 +13,7 @@ import Section from '@/components/Section/Section.jsx'
 
 import css from './App.module.css'
 
-export default function App() {
+export class App extends Component {
 
 	allFiltration = () => {
 		console.log('all')
@@ -22,7 +24,7 @@ export default function App() {
 	helicopterFiltration = () => {
 		console.log('helicopterFiltration')
 	}
-
+render() {
 	return (
 		<>
 			{/*//!  Filter */}
@@ -60,5 +62,5 @@ export default function App() {
 				<PlanesList items={helicopters} />
 			</Section>
 		</>
-	)
+	)}
 }
