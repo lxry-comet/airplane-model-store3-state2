@@ -1,3 +1,7 @@
+//! Перерендер компонентів відбувається у двох випадках:
+//! 1.Коли до них приходять нові props ✅
+//! 2.Коли змінюється state ✅
+
 //* import '../../App.css'
 import '@/App.css'
 // import planes from '../../json/planes.json'
