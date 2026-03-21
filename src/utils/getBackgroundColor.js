@@ -43,6 +43,6 @@ export function getBgColor(year) {
     let className = "listItem";
     if (year > 1945) className = "last";
     if (year > 1999) className = "current";
-    console.log("className:", className); //!
+    // console.log("className:", className); //!
     return className;
 };

@@ -5,11 +5,15 @@
 //* import '../../App.css'
 import '@/App.css'
 // import planes from '../../json/planes.json'
-import planes from '@/json/planes.json'
+
+import aircrafts from '@/json/aircrafts.json'
+// import planes from '@/json/planes.json'
+// import helicopters from '@/json/helicopters.json'
+
 
 import React, { Component } from 'react'
 
-import helicopters from '@/json/helicopters.json'
+
 // import PlanesList from '../PlanesList/PlanesList.jsx'
 import {Filter} from '@/components/Filter/Filter.jsx'
 import PlanesList from '@/components/PlanesList/PlanesList.jsx'
@@ -19,33 +23,66 @@ import Section from '@/components/Section/Section.jsx'
 import css from './App.module.css'
 
 export class App extends Component {
+
+
+
 	state = {
-		isPlain: false,
-		isHelicopter: false,
+		
+		aircraftsArray: aircrafts,
+
+		// isAircrafts: false,
+		// isPlain: false,
+		// isHelicopter: false,
+
 		bgColor: 'white',
 	}
 
 	allFiltration = () => {
 		console.log('all')
+		
 		this.setState({
-			isPlain: true,
-			isHelicopter: true,
+
+			aircraftsArray: aircrafts,
+
+			// isAircrafts: true,
+			// isPlain: false,
+			// isHelicopter: false,
 			bgColor: 'lightgreen'
 		})
+		console.log("aircrafts", aircrafts);
+
 	}
 	planeFiltration = () => {
 		console.log('planeFiltration')
+
+		const planesArray = aircrafts.filter(item => item.aircraftType === "plane" || item.aircraftType === "biplane");
+
+		console.log("planesArray", planesArray);
+
 		this.setState({
-			isPlain: true,
-			isHelicopter: false,
+			
+			aircraftsArray: planesArray,
+
+			// isAircrafts: false,
+			// isPlain: true,
+			// isHelicopter: false,
 			bgColor: 'yellow'
 		})
 	}
 	helicopterFiltration = () => {
 		console.log('helicopterFiltration')
+		const helicopterArray = aircrafts.filter(item => item.aircraftType === "helicopter");
+
+		console.log("helicopterArray", helicopterArray);
+
 		this.setState({
-			isPlain: false,
-			isHelicopter: true,
+
+			aircraftsArray: helicopterArray,
+
+
+			// isAircrafts: false,
+			// isPlain: false,
+			// isHelicopter: true,
 			bgColor: 'lightblue'
 		})
 	}
@@ -85,7 +122,15 @@ export class App extends Component {
           onHelicopters={this.helicopterFiltration}
 				/>
 
-				<Section 
+				<Section
+					// isOn={this.state.isAircrafts}
+					bgColor={this.state.bgColor}
+					title='Магазин моделей літаків та вертольотів'
+				>
+					<PlanesList items={this.state.aircraftsArray} />
+				</Section>
+
+				{/* <Section 
 					isOn={this.state.isPlain}
 					bgColor={this.state.bgColor}
 				 	title='Магазин моделей літаків'
@@ -99,7 +144,7 @@ export class App extends Component {
 					title='Магазин моделей вертольотів'
 				>
 					<PlanesList items={helicopters} />
-				</Section>
+				</Section> */}
 			</>
 		)
 	}
