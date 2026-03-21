@@ -29,6 +29,7 @@ export class App extends Component {
 	state = {
 		
 		aircraftsArray: aircrafts,
+		aircraftTitle: 'Магазин моделей літаків та вертольотів',
 
 		// isAircrafts: false,
 		// isPlain: false,
@@ -43,6 +44,7 @@ export class App extends Component {
 		this.setState({
 
 			aircraftsArray: aircrafts,
+			aircraftTitle: 'Магазин моделей літаків та вертольотів',
 
 			// isAircrafts: true,
 			// isPlain: false,
@@ -62,6 +64,7 @@ export class App extends Component {
 		this.setState({
 			
 			aircraftsArray: planesArray,
+		aircraftTitle: 'Магазин моделей літаків',
 
 			// isAircrafts: false,
 			// isPlain: true,
@@ -78,6 +81,7 @@ export class App extends Component {
 		this.setState({
 
 			aircraftsArray: helicopterArray,
+		aircraftTitle: 'Магазин моделей вертольотів',
 
 
 			// isAircrafts: false,
@@ -125,7 +129,7 @@ export class App extends Component {
 				<Section
 					// isOn={this.state.isAircrafts}
 					bgColor={this.state.bgColor}
-					title='Магазин моделей літаків та вертольотів'
+					title={this.state.aircraftTitle}
 				>
 					<PlanesList items={this.state.aircraftsArray} />
 				</Section>
