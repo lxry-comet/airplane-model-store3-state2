@@ -16,6 +16,7 @@ function PlanesList({ items }) {
 					key={item.id}
 				>
 					<Planes
+						bgCardTitle={item.aircraftType}
 						urlMain={item.url.main}
 						urlPromotional={item.url.promotional}
 						urlActual={item.url.actual}

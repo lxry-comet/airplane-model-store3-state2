@@ -1,18 +1,9 @@
-
 import css from './Filter.module.css'
 
-export function Filter({
-	onAll,
-	onPlanes,
-	onHelicopters
-}) {
+export function Filter({ onAll, onPlanes, onBiplanes, onHelicopters }) {
 	return (
 		<div className={css.filterBox}>
-			<button
-				className={css.buttonAllFiltration}
-				type='button'
-				onClick={onAll}
-			>
+			<button className={css.buttonAllFiltration} type='button' onClick={onAll}>
 				ВСІ
 			</button>
 
@@ -23,7 +14,13 @@ export function Filter({
 			>
 				Літаки
 			</button>
-
+			<button
+				className={css.buttonBiplaneFiltration}
+				type='button'
+				onClick={onBiplanes}
+			>
+				Біплани
+			</button>
 			<button
 				className={css.buttonHelicopterFiltration}
 				type='button'

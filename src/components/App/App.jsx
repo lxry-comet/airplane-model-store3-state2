@@ -64,12 +64,24 @@ export class App extends Component {
 		this.setState({
 			
 			aircraftsArray: planesArray,
-		aircraftTitle: 'Магазин моделей літаків',
-
+			aircraftTitle: 'Магазин моделей літаків',
 			// isAircrafts: false,
 			// isPlain: true,
 			// isHelicopter: false,
-			bgColor: 'yellow'
+			bgColor: 'lightgreen'
+		})
+	}
+	biplaneFiltration = () => {
+		console.log('biplaneFiltration')
+
+		const biplanesArray = aircrafts.filter(item => item.aircraftType === "biplane");
+
+		console.log("biplanesArray", biplanesArray);
+
+		this.setState({
+			aircraftsArray: biplanesArray,
+			aircraftTitle: 'Магазин моделей біпланів',
+			bgColor: 'lightgreen'
 		})
 	}
 	helicopterFiltration = () => {
@@ -87,7 +99,7 @@ export class App extends Component {
 			// isAircrafts: false,
 			// isPlain: false,
 			// isHelicopter: true,
-			bgColor: 'lightblue'
+			bgColor: 'lightgreen'
 		})
 	}
 	render() {
@@ -123,6 +135,7 @@ export class App extends Component {
 				<Filter
 					onAll={this.allFiltration}
           onPlanes={this.planeFiltration}
+					onBiplanes={this.biplaneFiltration}
           onHelicopters={this.helicopterFiltration}
 				/>
 
