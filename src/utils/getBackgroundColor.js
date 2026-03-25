@@ -39,10 +39,23 @@ import clsx from "clsx";
 // };
 
 //todo: CSS-модулі 
+// export function getBgColor(year) {
+//     let className = "listItem";
+//     if (year > 1945) className = "last";
+//     if (year > 1999) className = "current";
+//     // console.log("className:", className); //!
+//     return className;
+// };
+//* backgroundColor: '#ffd1d1', "year" до 1939 - (WWI (1914–1918) + The "Golden Age" of aviation (1918–1939))
+//* backgroundColor: '#ffdb92', "year" 1939–1945 - (WWII (1939–1945))
+//* backgroundColor: '#d2fdbd', "year" 1946-1999 - (Jet age (1946–1999))
+//* backgroundColor: '#d6f1ff', "year" від 2000 - (Нинішнє століття (2000-до наших днів))
 export function getBgColor(year) {
     let className = "listItem";
-    if (year > 1945) className = "last";
-    if (year > 1999) className = "current";
+    if (year < 1939) className = "planesItemWWIGoldenAge";
+    if (year >= 1939 && year <= 1945) className = "planesItemWWII";
+    if (year >= 1946 && year <= 1999) className = "planesItemJetAge";
+    if (year >= 2000) className = "planesItemCurrentAge";
     // console.log("className:", className); //!
     return className;
 };
