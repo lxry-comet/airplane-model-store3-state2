@@ -30,7 +30,7 @@ export class App extends Component {
 		
 		aircraftsArray: aircrafts,
 		aircraftTitle: 'Магазин моделей літаків та вертольотів',
-
+		activeButton: 'allButton',
 		// isAircrafts: false,
 		// isPlain: false,
 		// isHelicopter: false,

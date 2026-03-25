@@ -32,7 +32,6 @@
     color: #d9d902;
     background-color: #902a00;
 }
-
 .buttonAllFiltration {
     composes: button;
     border: 6px green solid;
@@ -49,4 +48,10 @@
 .buttonHelicopterFiltration {
     composes: button;
     border: 6px #9accf5 solid;
+}
+/*//! Візуалізація активної кнопки */
+.active {
+    color: #c51900;
+    box-shadow: none;
+    outline: 1px #902a00 solid;
 }
