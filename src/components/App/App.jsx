@@ -36,6 +36,7 @@ export class App extends Component {
 		// isHelicopter: false,
 
 		bgColor: 'white',
+
 	}
 
 	allFiltration = () => {
@@ -45,7 +46,7 @@ export class App extends Component {
 
 			aircraftsArray: aircrafts,
 			aircraftTitle: 'Магазин моделей літаків та вертольотів',
-
+			activeButton:'allButton',
 			// isAircrafts: true,
 			// isPlain: false,
 			// isHelicopter: false,
@@ -65,6 +66,7 @@ export class App extends Component {
 			
 			aircraftsArray: planesArray,
 			aircraftTitle: 'Магазин моделей літаків',
+			activeButton:'planeButton',
 			// isAircrafts: false,
 			// isPlain: true,
 			// isHelicopter: false,
@@ -81,6 +83,7 @@ export class App extends Component {
 		this.setState({
 			aircraftsArray: biplanesArray,
 			aircraftTitle: 'Магазин моделей біпланів',
+			activeButton:'biplaneButton',
 			bgColor: 'lightgreen'
 		})
 	}
@@ -94,6 +97,7 @@ export class App extends Component {
 
 			aircraftsArray: helicopterArray,
 		aircraftTitle: 'Магазин моделей вертольотів',
+		activeButton:'helicopterButton',
 
 
 			// isAircrafts: false,
@@ -137,6 +141,7 @@ export class App extends Component {
           onPlanes={this.planeFiltration}
 					onBiplanes={this.biplaneFiltration}
           onHelicopters={this.helicopterFiltration}
+					buttonActive={this.state.activeButton}
 				/>
 
 				<Section
