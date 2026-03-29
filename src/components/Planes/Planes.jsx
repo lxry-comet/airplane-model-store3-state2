@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types'
 import defaultImage from '../default.jpg'
 import css from './Planes.module.css'
+import {ActualImageModal} from '@/components/ActualImageModal/ActualImageModal.jsx' 
 
-//! Бібліотека react-icons
 import {
 	FaMapMarkerAlt,
 	FaUserAlt,
@@ -132,8 +132,9 @@ export default function Planes({
 				<CiAirportSign1 className={css.icon} size={iconSize.sm} />
 				Реальна модель:
 			</h4>
+			{/* //? Блок зображень без модальнич вікон */}
 
-			<div className={css.imageContainer}>
+			{/* <div className={css.imageContainer}>
 				{urlActual.map((item, index) => (
 					<img
 						key={index}
@@ -142,8 +143,8 @@ export default function Planes({
 						className={css.actualImage}
 					/>
 				))}
-			</div>
-
+			</div> */}
+			<ActualImageModal images={urlActual} briefName={nameBrief}/>
 			<button className={css.button} type='button'>
 				Додати до кошику
 			</button>

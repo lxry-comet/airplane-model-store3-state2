@@ -54,14 +54,7 @@
 	composes: itemTitle;
 	background-color: #9accf5;
 }
-.imageContainer {
-	display: flex;
-	gap: 10px;
-	flex-wrap: wrap;
-	padding: 8px;
-	border-radius: 8px;
-	background-color: gray;
-}
+
 .button {
 
 	display: flex;
@@ -90,8 +83,3 @@
 		inset 0 0 16px 8px rgba(0, 0, 0, 0.3),
 		0 8px 16px rgba(0, 0, 0, 0.9);
 }
-.actualImage {
-	max-width: calc((100% - 10px) / 2);
-	border-radius: 4px;
-}
-
