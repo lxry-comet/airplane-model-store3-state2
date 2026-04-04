@@ -43,7 +43,13 @@ export class ActualImageModal extends Component {
 
 	render() {
 		
-	const {images, briefName, nameFull, description} = 	this.props;
+	const {
+		images,
+		imagesFull, 
+		briefName, 
+		nameFull, 
+		description
+	} = 	this.props;
 	
 	const { open, index } = this.state;
 
@@ -52,7 +58,7 @@ export class ActualImageModal extends Component {
 	 //! Масив об'єктів зображень для Lightbox
 	// const slides = images.map((src) => ({ src }));
 	
-	const slides = images.map((src) => ({ 
+	const slides = imagesFull.map((src) => ({ 
 			src,
       title: nameFull,
       description: description,

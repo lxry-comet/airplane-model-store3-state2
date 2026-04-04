@@ -36,6 +36,7 @@ export default function Planes({
 	urlMain = defaultImage,
 	urlPromotional,
 	urlActual = [],
+	urlActualFull = [],
 	nameBrief,
 	nameFull,
 	nickname = 'не відомо',
@@ -145,10 +146,11 @@ export default function Planes({
 				))}
 			</div> */}
 			<ActualImageModal 
+			images={urlActual} 
+			imagesFull={urlActualFull}
+			briefName={nameBrief}
 			nameFull={nameFull}
 			description={description}
-			images={urlActual} 
-			briefName={nameBrief}
 			/>
 			<button className={css.button} type='button'>
 				Додати до кошику
