@@ -144,7 +144,12 @@ export default function Planes({
 					/>
 				))}
 			</div> */}
-			<ActualImageModal images={urlActual} briefName={nameBrief}/>
+			<ActualImageModal 
+			nameFull={nameFull}
+			description={description}
+			images={urlActual} 
+			briefName={nameBrief}
+			/>
 			<button className={css.button} type='button'>
 				Додати до кошику
 			</button>
