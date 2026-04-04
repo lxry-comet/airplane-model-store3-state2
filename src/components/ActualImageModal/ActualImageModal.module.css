@@ -9,4 +9,13 @@
 .actualImage {
 	max-width: calc((100% - 10px) / 2);
 	border-radius: 4px;
+
+	cursor: pointer; /*! + */
+  transition: transform 500ms; /*! + */
+  font-size: 1.1em;
+
+}
+.actualImage:hover {
+    transform: scale(1.03);
+    outline: 3px solid #ff9111;
 }
