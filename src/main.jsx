@@ -8,7 +8,7 @@ import './index.css'
 
 createRoot(document.getElementById('root')).render(
 	<StrictMode>
-		<BrowserRouter basename='/airplane-model-store3-state1'>
+		<BrowserRouter basename='/airplane-model-store3-state2'>
 			<App />
 			{/* <AppCounter /> */}
 		</BrowserRouter>
