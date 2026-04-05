@@ -58,7 +58,10 @@ export class ActualImageModal extends Component {
 	 //! Масив об'єктів зображень для Lightbox
 	// const slides = images.map((src) => ({ src }));
 	
-	const slides = imagesFull.map((src) => ({ 
+  // if (imagesFull.length === 0) imagesFull.push(...images); 
+  // //todo: тимчасово, бо немає всіх imagesFull
+
+	const slides = (imagesFull.length ? imagesFull : images).map((src) => ({ 
 			src,
       title: nameFull,
       description: description,
