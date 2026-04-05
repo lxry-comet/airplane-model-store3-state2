@@ -17,7 +17,11 @@ export class ColorBox extends Component {
 
 				<div className={css.colorBox}>
 					{colorBoxes.map(item =>(
-						<button className={css.colorBoxButton}>
+						<button 
+						key={item.color}
+						className={css.colorBoxButton} 
+						style={{backgroundColor: item.color}}
+						>
 							{'off'}
 							</button>
 						))}
