@@ -4,6 +4,8 @@ import css from './ColorBox.module.css';
 export class ColorBox extends Component {
 	//* 1) Отримати індекс активного елементу 
 	//! 2) Створити масив індексів активних(обраних) елементів
+	//! 2.1)Доадти логіку інверсії роботи кнопок кольорів(якщо такий ідекс вже є, прибираємо його, якщо його немає, додаємо його)
+
 	//! 3) Створити масив обраних елементів згідно масивів індексів
 	//! 4) Відрендерити масив обраних елементів
 
@@ -26,6 +28,17 @@ export class ColorBox extends Component {
            selectedButtonsIdx: prevState.selectedButtonsIdx.concat([index]) 
     }));
 
+		
+		if ("якщо такий ідекс вже є, прибираємо його, якщо його немає, додаємо його"){
+			//! 1 Масив this.state.selectedButtonsIdx
+			//! 2 Індекс - index
+			//! 3 З масиву this.state.selectedButtonsIdx потрібно видалити елемент з індексом який дорівнює index
+		}
+		else{
+			//! 1 Масив this.state.selectedButtonsIdx
+			//! 2 Індекс - index
+			//! 3 З масиву this.state.selectedButtonsIdx потрібно додати елемент з індексом який дорівнює index
+		}
 		// const y = array.arrayAll; //! повне безглуздя
 		// const allClientsWithOldFirst = oldClients.concat(newClients);
 		// return {
@@ -39,7 +52,7 @@ export class ColorBox extends Component {
 		// console.log('SelectedButtonsIdx: ', selectedButtonsIdx);
 		// console.log('Index: ', index);
 		// console.log('Index-state: ', this.state.activeButtonIndex); //!❌ ТАК РОБИТИ не треба !!!!!
-
+		
 
 	}
 		func = () => {
