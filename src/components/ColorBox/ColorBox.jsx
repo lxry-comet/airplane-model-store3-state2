@@ -8,7 +8,9 @@ export class ColorBox extends Component {
 	//! 4) Відрендерити масив обраних елементів
 
 	state = {
-		activeButtonIndex: null
+		activeButtonIndex: null,
+		selectedButtonsIdx: [],
+		selectedButtonsArrayIdx: []
 	}
 
 	getActiveIndex = (index) => {
@@ -17,7 +19,11 @@ export class ColorBox extends Component {
 		})
 		const selectedButtonsIdx = [index];
 		const selectedButtonsArrayIdx = [];
-
+		return {
+      selectedIndices: isAlreadySelected
+        ? selectedIndices.filter((idx) => idx !== index)
+        : [...selectedIndices, index],
+    };
 		let a;
 		a = a+1;
 		console.log('SelectedButtonsIdx: ', selectedButtonsIdx);
