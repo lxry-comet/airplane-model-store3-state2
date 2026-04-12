@@ -8,25 +8,35 @@ export class ColorBox extends Component {
 	//! 4) Відрендерити масив обраних елементів
 
 	state = {
-		activeButtonIndex: null,
-		selectedButtonsIdx: [],
-		selectedButtonsArrayIdx: []
+		activeButtonIndex: null, //! індекс обраного елемента
+		selectedButtonsIdx: [], //! масив індексів активних(обраних) елементів
+		selectedColors: [] //! масив обраних елементів згідно масивів індексів
 	}
 
 	getActiveIndex = (index) => {
+
 		this.setState({
 			activeButtonIndex: index
+
 		})
-		const selectedButtonsIdx = [index];
-		const selectedButtonsArrayIdx = [];
-		return {
-      selectedIndices: isAlreadySelected
-        ? selectedIndices.filter((idx) => idx !== index)
-        : [...selectedIndices, index],
-    };
-		let a;
-		a = a+1;
-		console.log('SelectedButtonsIdx: ', selectedButtonsIdx);
+		// const array = [index];
+		// const arrayAll = this.state.selectedButtonsIdx.concat(array);
+		
+		this.setState(prevState => ({
+           selectedButtonsIdx: prevState.selectedButtonsIdx.concat([index]) 
+    }));
+
+		// const y = array.arrayAll; //! повне безглуздя
+		// const allClientsWithOldFirst = oldClients.concat(newClients);
+		// return {
+    //   selectedIndices: isAlreadySelected
+    //     ? selectedIndices.filter((idx) => idx !== index)
+    //     : [...selectedIndices, index],
+		// 	selectedButtonsIdx: arrayAll,
+    // };
+		// let a;
+		// a = a+1;
+		// console.log('SelectedButtonsIdx: ', selectedButtonsIdx);
 		// console.log('Index: ', index);
 		// console.log('Index-state: ', this.state.activeButtonIndex); //!❌ ТАК РОБИТИ не треба !!!!!
 
@@ -40,11 +50,16 @@ export class ColorBox extends Component {
 
 
 		const {colorBoxes} = this.props;
-		const {activeButtonIndex} = this.state;
-		console.log('Index-render: ', activeButtonIndex);
+		const {activeButtonIndex, selectedButtonsIdx, selectedColors} = this.state;
+		// console.log('Index-render: ', activeButtonIndex);
+
+		console.log("🔘🆔Активна кнопка:", activeButtonIndex);
+    console.log("ℹ️Індекси обраних кнопок:", selectedButtonsIdx);
+    // console.log("Ⓜ️Масив обраних елементів(кольорів):", selectedColors);
+    // console.log("🔢Кількість обраних кольорів:", numberOfColors);
+    console.log("----------------------------------------------");
 
 		// console.log('ColorBoxes: ', colorBoxes);
-
 		return(
 			<div className={css.colorBoxContainer}>
 				<h3 className={css.colorBoxTitle}>Вибір Кольорів</h3>
