@@ -24,21 +24,30 @@ export class ColorBox extends Component {
 		// const array = [index];
 		// const arrayAll = this.state.selectedButtonsIdx.concat(array);
 		
-		this.setState(prevState => ({
-           selectedButtonsIdx: prevState.selectedButtonsIdx.concat([index]) 
-    }));
+		this.setState((prevState) => {
+          //  selectedButtonsIdx: prevState.selectedButtonsIdx.concat([index]) 
+
+			if (prevState.selectedButtonsIdx.includes(index)){
+				//! 1 Масив this.state.selectedButtonsIdx
+				//! 2 Індекс - index
+				//! 3 З масиву this.state.selectedButtonsIdx потрібно видалити елемент з 	індексом який дорівнює index
+				return{
+						selectedButtonsIdx: prevState.selectedButtonsIdx.filter((idx) => idx !== index) 
+					}
+				}
+			else{
+				//! 1 Масив this.state.selectedButtonsIdx
+				//! 2 Індекс - index
+				//! 3 З масиву this.state.selectedButtonsIdx потрібно додати елемент з індексом який дорівнює index
+				return {
+					//? Створюємо новий масив, у який копіюємо всі елементи зі старого масиву та додаємо до них новий елемент
+        	selectedButtonsIdx: [...prevState.selectedButtonsIdx, index] 
+    		};			
+			}
+    });
 
 		
-		if ("якщо такий ідекс вже є, прибираємо його, якщо його немає, додаємо його"){
-			//! 1 Масив this.state.selectedButtonsIdx
-			//! 2 Індекс - index
-			//! 3 З масиву this.state.selectedButtonsIdx потрібно видалити елемент з індексом який дорівнює index
-		}
-		else{
-			//! 1 Масив this.state.selectedButtonsIdx
-			//! 2 Індекс - index
-			//! 3 З масиву this.state.selectedButtonsIdx потрібно додати елемент з індексом який дорівнює index
-		}
+
 		// const y = array.arrayAll; //! повне безглуздя
 		// const allClientsWithOldFirst = oldClients.concat(newClients);
 		// return {
