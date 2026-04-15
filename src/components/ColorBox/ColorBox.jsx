@@ -17,22 +17,44 @@ export class ColorBox extends Component {
 
 	getActiveIndex = (index) => {
 
-		this.setState({
-			activeButtonIndex: index
+		//! відноситься до варіанту 1 - з PrevState
+		// this.setState({
+		// 	activeButtonIndex: index
+		// })
 
-		})
-		// const array = [index];
-		// const arrayAll = this.state.selectedButtonsIdx.concat(array);
+		//? Варіант 1 - з PrevState
+		// this.setState((prevState) => {
+    //       //  selectedButtonsIdx: prevState.selectedButtonsIdx.concat([index]) 
+
+		// 	if (prevState.selectedButtonsIdx.includes(index)){
+		// 		//! 1 Масив this.state.selectedButtonsIdx
+		// 		//! 2 Індекс - index
+		// 		//! 3 З масиву this.state.selectedButtonsIdx потрібно видалити елемент з 	індексом який дорівнює index
+		// 		return{
+		// 				selectedButtonsIdx: prevState.selectedButtonsIdx.filter((item) => item !== index) 
+		// 			}
+		// 		}
+		// 	else{
+		// 		//! 1 Масив this.state.selectedButtonsIdx
+		// 		//! 2 Індекс - index
+		// 		//! 3 З масиву this.state.selectedButtonsIdx потрібно додати елемент з індексом який дорівнює index
+		// 		return {
+		// 			//? Створюємо новий масив, у який копіюємо всі елементи зі старого масиву та додаємо до них новий елемент
+    //     	selectedButtonsIdx: [...prevState.selectedButtonsIdx, index] 
+    // 		};			
+		// 	}
+    // }); 
 		
-		this.setState((prevState) => {
-          //  selectedButtonsIdx: prevState.selectedButtonsIdx.concat([index]) 
-
-			if (prevState.selectedButtonsIdx.includes(index)){
+		//? Варіант 2 - без PrevState
+		
+		this.setState(() => {
+			if ( this.state.selectedButtonsIdx.includes(index)){
 				//! 1 Масив this.state.selectedButtonsIdx
 				//! 2 Індекс - index
 				//! 3 З масиву this.state.selectedButtonsIdx потрібно видалити елемент з 	індексом який дорівнює index
 				return{
-						selectedButtonsIdx: prevState.selectedButtonsIdx.filter((idx) => idx !== index) 
+						//activeButtonIndex: index, //! це буде останній активний елемент. 
+						selectedButtonsIdx: this.state.selectedButtonsIdx.filter((item) => item !== index), 
 					}
 				}
 			else{
@@ -41,28 +63,14 @@ export class ColorBox extends Component {
 				//! 3 З масиву this.state.selectedButtonsIdx потрібно додати елемент з індексом який дорівнює index
 				return {
 					//? Створюємо новий масив, у який копіюємо всі елементи зі старого масиву та додаємо до них новий елемент
-        	selectedButtonsIdx: [...prevState.selectedButtonsIdx, index] 
+					activeButtonIndex: index,
+        	selectedButtonsIdx: [...this.state.selectedButtonsIdx, index]
     		};			
 			}
     });
 
-		
-
 		// const y = array.arrayAll; //! повне безглуздя
-		// const allClientsWithOldFirst = oldClients.concat(newClients);
-		// return {
-    //   selectedIndices: isAlreadySelected
-    //     ? selectedIndices.filter((idx) => idx !== index)
-    //     : [...selectedIndices, index],
-		// 	selectedButtonsIdx: arrayAll,
-    // };
-		// let a;
-		// a = a+1;
-		// console.log('SelectedButtonsIdx: ', selectedButtonsIdx);
-		// console.log('Index: ', index);
 		// console.log('Index-state: ', this.state.activeButtonIndex); //!❌ ТАК РОБИТИ не треба !!!!!
-		
-
 	}
 		func = () => {
 			console.log('Це фунуція func')
