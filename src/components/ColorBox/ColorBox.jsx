@@ -81,7 +81,7 @@ export class ColorBox extends Component {
 
 		const {colorBoxes} = this.props;
 		const {activeButtonIndex, selectedButtonsIdx, selectedColors} = this.state;
-		// console.log('Index-render: ', activeButtonIndex);
+
 
 		console.log("🔘🆔Активна кнопка:", activeButtonIndex);
     console.log("ℹ️Індекси обраних кнопок:", selectedButtonsIdx);
@@ -89,13 +89,33 @@ export class ColorBox extends Component {
     // console.log("🔢Кількість обраних кольорів:", numberOfColors);
     console.log("----------------------------------------------");
 
-		// console.log('ColorBoxes: ', colorBoxes);
+
+		//? Поєднуємо: 
+		//* початковий масив: colorBoxes; 
+		//* activeButtonIndex - індекс останнього доданого елементу;
+		//* Рішенння колір останнього доданого елемента:
+		// ?  colorBoxes[activeButtonIndex].label
+		// ?  colorBoxes[activeButtonIndex].color
+	
 		return(
 			<div className={css.colorBoxContainer}>
 				<h3 className={css.colorBoxTitle}>Вибір Кольорів</h3>
 
-				<p className={css.colorBoxDescription}>Остнній доданий колір:	
-					<span className={css.colorBoxSelectedColor}>{'red'}</span>
+				<p className={css.colorBoxDescription}>Остнній доданий колір: &nbsp;
+					<span
+					 className={css.colorBoxSelectedColor}
+					 style={{backgroundColor:
+						activeButtonIndex === null 
+						? 'transparent' 
+						: colorBoxes[activeButtonIndex].color
+					}}
+					 >
+						{
+						activeButtonIndex === null 
+						? 'Колір не обрано' 
+						:colorBoxes[activeButtonIndex].label
+						}
+						</span>
 				</p>
 
 				<div className={css.colorBox}>
