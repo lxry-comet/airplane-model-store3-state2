@@ -68,7 +68,8 @@ export class ColorBox extends Component {
     		};			
 			}
     });
-
+//! selectedButtonsIdx: [...this.state.selectedButtonsIdx, index] - переробити через concat
+//! довести шо то спред [...this.state.selectedButtonsIdx, index]
 		// const y = array.arrayAll; //! повне безглуздя
 		// console.log('Index-state: ', this.state.activeButtonIndex); //!❌ ТАК РОБИТИ не треба !!!!!
 	}
