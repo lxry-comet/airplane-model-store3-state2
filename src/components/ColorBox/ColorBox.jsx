@@ -14,6 +14,7 @@ export class ColorBox extends Component {
 		selectedButtonsIdx: [], //! масив індексів активних(обраних) елементів
 		selectedColors: [] //! масив обраних елементів згідно масивів індексів
 	}
+	//! Для створення масиву selectedColors[] нам потрібно: вхідний масив, масив індексів активних(обраних) елементів.
 
 	getActiveIndex = (index) => {
 
@@ -47,32 +48,42 @@ export class ColorBox extends Component {
 		
 		//? Варіант 2 - без PrevState
 		
-		this.setState(() => {
 			if ( this.state.selectedButtonsIdx.includes(index)){
 				//! 1 Масив this.state.selectedButtonsIdx
 				//! 2 Індекс - index
 				//! 3 З масиву this.state.selectedButtonsIdx потрібно видалити елемент з 	індексом який дорівнює index
-				return{
 						//activeButtonIndex: index, //! це буде останній активний елемент. 
-						selectedButtonsIdx: this.state.selectedButtonsIdx.filter((item) => item !== index), 
-					}
+				this.setState({
+					selectedButtonsIdx: this.state.selectedButtonsIdx.filter((item) => item !== index), 
+				}) 
+
 				}
 			else{
 				//! 1 Масив this.state.selectedButtonsIdx
 				//! 2 Індекс - index
 				//! 3 З масиву this.state.selectedButtonsIdx потрібно додати елемент з індексом який дорівнює index
-				return {
+				
 					//? Створюємо новий масив, у який копіюємо всі елементи зі старого масиву та додаємо до них новий елемент
+				this.setState({
 					activeButtonIndex: index,
-        	selectedButtonsIdx: [...this.state.selectedButtonsIdx, index]
-    		};			
+        	selectedButtonsIdx: this.state.selectedButtonsIdx.concat(index)
+				})
 			}
-    });
+
+			//! ДЗ законсолити -> this.setState((prevState) => prevState.selectedButtonsIdx)
+
+			//? const result = this.setState((prevState) => prevState.selectedButtonsIdx);
+    	//? 	console.log('Тут сформувався масив індексів: ', result);
+
+			this.setState((prevState) => {
+				return {selectedColors: prevState.selectedButtonsIdx.map((item) => this.props.colorBoxes[item])};
+			});
+    };
+
 //! selectedButtonsIdx: [...this.state.selectedButtonsIdx, index] - переробити через concat
-//! довести шо то спред [...this.state.selectedButtonsIdx, index]
+//? selectedButtonsIdx: this.state.selectedButtonsIdx.concat(index)
 		// const y = array.arrayAll; //! повне безглуздя
 		// console.log('Index-state: ', this.state.activeButtonIndex); //!❌ ТАК РОБИТИ не треба !!!!!
-	}
 		func = () => {
 			console.log('Це фунуція func')
 			return 'Це функція func'
@@ -84,9 +95,10 @@ export class ColorBox extends Component {
 		const {activeButtonIndex, selectedButtonsIdx, selectedColors} = this.state;
 
 
+
 		console.log("🔘🆔Активна кнопка:", activeButtonIndex);
     console.log("ℹ️Індекси обраних кнопок:", selectedButtonsIdx);
-    // console.log("Ⓜ️Масив обраних елементів(кольорів):", selectedColors);
+    console.log("Ⓜ️Масив обраних елементів(кольорів):", selectedColors);
     // console.log("🔢Кількість обраних кольорів:", numberOfColors);
     console.log("----------------------------------------------");
 
