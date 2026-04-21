@@ -75,6 +75,7 @@ export class ColorBox extends Component {
 			//? const result = this.setState((prevState) => prevState.selectedButtonsIdx);
     	//? 	console.log('Тут сформувався масив індексів: ', result);
 
+			//! Формуємо масив обраних елементів(кольорів)
 			this.setState((prevState) => {
 				return {selectedColors: prevState.selectedButtonsIdx.map((item) => this.props.colorBoxes[item])};
 			});
@@ -130,7 +131,7 @@ export class ColorBox extends Component {
 						}
 						</span>
 				</p>
-
+					
 				<div className={css.colorBox}>
 					{colorBoxes.map((item, index) =>(
 						<button 
@@ -145,7 +146,38 @@ export class ColorBox extends Component {
 							</button>
 						))}
 				</div>
+					{/*
+					//! ДЗ: 
+						//? Додати в рендер розмітку яка відмальовує масив обраних елементів згідно макету.
+					*/}	
+				<h3 className={css.colorBoxTitle}>Обрані кольори з <b>LocalStorage</b></h3>
+
+				<p className={css.colorBoxDescription}>Кількість обраних кольорів: &nbsp;
+					<span>
+						{
+						selectedColors === null 
+						? 'Колір не обрано' 
+						:selectedColors.length
+						}
+						</span>
+				</p>
+				<div className={css.selectedColors}>
+					{
+						selectedColors.map((item) => {
+							return(
+								<div style={{backgroundColor: item.color}}>
+									<p className={css.selectedColorsText}>{item.color}</p>
+								</div>
+							);
+						})
+					}
+				</div>
 			</div>
+
+
+			
 		)
 	}
 }
+
+
