@@ -144,7 +144,9 @@ export class ColorBox extends Component {
 							{
 								// Треба порівняти вибраний індекс з індексом у масиві. Якщо є то '✅On', якщо немає то '🆓Off'
 
-							selectedButtonsIdx.includes(index)
+							//*[1] selectedButtonsIdx.includes(index)
+							//* [2 - 90% працездатності]selectedButtonsIdx.find((item) => item === index)
+							selectedButtonsIdx.some((item) => item === index)
 								? '✅On' 
 								: '🆓Off'
 						}
