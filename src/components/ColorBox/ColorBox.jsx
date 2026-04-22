@@ -93,7 +93,17 @@ export class ColorBox extends Component {
 
 
 		const {colorBoxes} = this.props;
-		const {activeButtonIndex, selectedButtonsIdx, selectedColors} = this.state;
+		const {
+			activeButtonIndex, 
+			selectedButtonsIdx, 
+			// selectedColors
+
+		} = this.state;
+
+		const selectedColors = selectedButtonsIdx.map((item) => this.props.colorBoxes[item]);
+
+		//! Спробувати прибрати зі стейту ще одну властивість. 
+		//! Розуміючи той факт, що далі ця задача буде вирішувати у застосунку з літаками. 
 
 		const numberOfColors = selectedColors.length;
 		console.log("🔘🆔Активна кнопка:", activeButtonIndex);
