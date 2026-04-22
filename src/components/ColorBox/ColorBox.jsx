@@ -95,12 +95,11 @@ export class ColorBox extends Component {
 		const {colorBoxes} = this.props;
 		const {activeButtonIndex, selectedButtonsIdx, selectedColors} = this.state;
 
-
-
+		const numberOfColors = selectedColors.length;
 		console.log("🔘🆔Активна кнопка:", activeButtonIndex);
     console.log("ℹ️Індекси обраних кнопок:", selectedButtonsIdx);
     console.log("Ⓜ️Масив обраних елементів(кольорів):", selectedColors);
-    // console.log("🔢Кількість обраних кольорів:", numberOfColors);
+    console.log("🔢Кількість обраних кольорів:", numberOfColors);
     console.log("----------------------------------------------");
 
 
@@ -142,7 +141,13 @@ export class ColorBox extends Component {
 						// onClick={this.getActiveIndex(index)}❌
 						// onClick={this.getActiveIndex}❌
 						>
-							{'off'}
+							{
+								// Треба порівняти вибраний індекс з індексом у масиві. Якщо є то '✅On', якщо немає то '🆓Off'
+
+							selectedButtonsIdx.includes(index)
+								? '✅On' 
+								: '🆓Off'
+						}
 							</button>
 						))}
 				</div>
@@ -155,9 +160,9 @@ export class ColorBox extends Component {
 				<p className={css.colorBoxDescription}>Кількість обраних кольорів: &nbsp;
 					<span>
 						{
-						selectedColors === null 
+						selectedColors === null 	
 						? 'Колір не обрано' 
-						:selectedColors.length
+						: numberOfColors
 						}
 						</span>
 				</p>
@@ -165,8 +170,8 @@ export class ColorBox extends Component {
 					{
 						selectedColors.map((item) => {
 							return(
-								<div style={{backgroundColor: item.color}}>
-									<p className={css.selectedColorsText}>{item.color}</p>
+								<div key={item.color} style={{backgroundColor: item.color}}>
+									<div className={css.selectedColorsText}>{item.color}</div>
 								</div>
 							);
 						})
