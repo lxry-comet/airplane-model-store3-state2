@@ -9,11 +9,45 @@ export class ColorBox extends Component {
 	//! 3) Створити масив обраних елементів згідно масивів індексів
 	//! 4) Відрендерити масив обраних елементів
 
+
+// ? Логіка роботи з LocalStorage: 
+
 	state = {
 		// activeButtonIndex: null, //! індекс обраного елемента
-		selectedButtonsIdx: [], //! масив індексів активних(обраних) елементів
+		// selectedButtonsIdx: [], //! масив індексів активних(обраних) елементів
+
+		
+		// * При будь-якому завантажені застосунку аналізуємо стан LocalStorage:
+		// * 1.1 Якщо нічого не має, то у властивість стейту, selectedButtonsIdx створюємо пустий масив
+		// * 1.2 Якщо LocalStorage не пустий, то значення LocalStorage перезаписуємо у властивість стейту selectedButtonsIdx
+
+		selectedButtonsIdx: JSON.parse(localStorage.getItem("selectedIdx")) || [],
+
 		// selectedColors: [] //! масив обраних елементів згідно масивів індексів
 	}
+	// * 2 При першому завантажені якщо нічого не має  у властивість стейту, то створюємо пустий масив який записуємо у LocalStorage
+
+	componentDidMount() {
+		console.log('Спрацював componentDidMount');
+        const saved = localStorage.getItem("selectedIdx");
+        if (!saved) {
+            localStorage.setItem("selectedIdx", JSON.stringify([]));
+        }
+    };
+
+// * 3 При будь яких змінах властивості selectedButtonIdx, записуємо selectedButtonIdx у LocalStorage
+
+	componentDidUpdate(prevProps, prevState) {
+		console.log('Спрацював componentDidUpdate');
+
+        if (prevState.selectedButtonsIdx !== this.state.selectedButtonsIdx) {
+            localStorage.setItem(
+                "selectedIdx",
+                JSON.stringify(this.state.selectedButtonsIdx)
+            );
+        }
+    };
+
 	//! Для створення масиву selectedColors[] нам потрібно: вхідний масив, масив індексів активних(обраних) елементів.
 
 	getActiveIndex = (index) => {
