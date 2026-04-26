@@ -10,9 +10,9 @@ export class ColorBox extends Component {
 	//! 4) Відрендерити масив обраних елементів
 
 	state = {
-		activeButtonIndex: null, //! індекс обраного елемента
+		// activeButtonIndex: null, //! індекс обраного елемента
 		selectedButtonsIdx: [], //! масив індексів активних(обраних) елементів
-		selectedColors: [] //! масив обраних елементів згідно масивів індексів
+		// selectedColors: [] //! масив обраних елементів згідно масивів індексів
 	}
 	//! Для створення масиву selectedColors[] нам потрібно: вхідний масив, масив індексів активних(обраних) елементів.
 
@@ -65,8 +65,8 @@ export class ColorBox extends Component {
 				
 					//? Створюємо новий масив, у який копіюємо всі елементи зі старого масиву та додаємо до них новий елемент
 				this.setState({
-					activeButtonIndex: index,
-        	selectedButtonsIdx: this.state.selectedButtonsIdx.concat(index)
+					// activeButtonIndex: index,
+        	selectedButtonsIdx: this.state.selectedButtonsIdx.concat(index).sort((a, b) => a - b)
 				})
 			}
 
@@ -94,19 +94,21 @@ export class ColorBox extends Component {
 
 		const {colorBoxes} = this.props;
 		const {
-			activeButtonIndex, 
+			// activeButtonIndex, 
 			selectedButtonsIdx, 
 			// selectedColors
-
 		} = this.state;
 
 		const selectedColors = selectedButtonsIdx.map((item) => this.props.colorBoxes[item]);
 
 		//! Спробувати прибрати зі стейту ще одну властивість. 
 		//! Розуміючи той факт, що далі ця задача буде вирішувати у застосунку з літаками. 
+		// const activeButtonIndex = selectedButtonsIdx.length > 0
+		// ? selectedButtonsIdx[selectedButtonsIdx.length - 1]
+		// : null;
 
 		const numberOfColors = selectedColors.length;
-		console.log("🔘🆔Активна кнопка:", activeButtonIndex);
+		// console.log("🔘🆔Активна кнопка:", activeButtonIndex);
     console.log("ℹ️Індекси обраних кнопок:", selectedButtonsIdx);
     console.log("Ⓜ️Масив обраних елементів(кольорів):", selectedColors);
     console.log("🔢Кількість обраних кольорів:", numberOfColors);
@@ -125,7 +127,7 @@ export class ColorBox extends Component {
 				<h3 className={css.colorBoxTitle}>Вибір Кольорів</h3>
 
 				<p className={css.colorBoxDescription}>Остнній доданий колір: &nbsp;
-					<span
+					{/* <span
 					 className={css.colorBoxSelectedColor}
 					 style={{backgroundColor:
 						activeButtonIndex === null 
@@ -138,7 +140,7 @@ export class ColorBox extends Component {
 						? 'Колір не обрано' 
 						:colorBoxes[activeButtonIndex].label
 						}
-						</span>
+						</span> */}
 				</p>
 					
 				<div className={css.colorBox}>

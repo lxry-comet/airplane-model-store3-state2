@@ -7,6 +7,7 @@ const colorBoxOptions = [
   { label: 'lightblue', color: '#add8e6' },
   { label: 'blue', color: '#3131ff' },
   { label: 'violet', color: '#ee82ee' },
+  
 ];
 
 export function AppColorBox(){
