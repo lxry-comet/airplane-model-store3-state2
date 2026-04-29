@@ -68,14 +68,11 @@ export default function Planes({
 				<GiAbstract021 className={css.icon} size={iconSize.lg} />
 				{nameBrief}
 			</h3>
-
 			<img src={urlMain} alt={nameBrief} className={css.mainImage} />
-
 			<p className={css.textField}>
 				<FcTrademark className={css.icon} size={iconSize.sm} />
 				Повна назва: <span className={css.textFieldValue}>{nameFull}</span>
 			</p>
-
 			<p className={css.textField}>
 				{/* Логіка: якщо тип містить "літак" — одна іконка, інакше — бумеранг */}
 				{type.toLowerCase().includes('літак') ? (
@@ -85,22 +82,18 @@ export default function Planes({
 				)}
 				Тип: <span className={css.textFieldValue}>{type}</span>
 			</p>
-
 			<p className={css.textField}>
 				<GiCeremonialMask className={css.icon} size={iconSize.sm} />
 				Прізвисько: <span className={css.textFieldValue}>{nickname}</span>
 			</p>
-
 			<p className={css.textField}>
 				<AiOutlineFlag className={css.icon} size={iconSize.sm} />
 				Країна виробник: <span className={css.textFieldValue}>{country}</span>
 			</p>
-
 			<p className={css.textField}>
 				<AiOutlineClockCircle className={css.icon} size={iconSize.sm} />
 				Рік випуску: <span className={css.textFieldValue}>{year}</span>
 			</p>
-
 			{different && (
 				<p className={css.textField}>
 					<TbClockHour4Filled className={css.icon} size={iconSize.sm} />
@@ -108,17 +101,14 @@ export default function Planes({
 					<span className={css.textFieldValue}>{different}</span>
 				</p>
 			)}
-
 			<p className={css.textField}>
 				<CiBadgeDollar className={css.icon} size={iconSize.md} />
 				Ціна: <span className={css.textFieldValue}>{price}</span>
 			</p>
-
 			<p className={css.textField}>
 				<AiOutlineInfoCircle className={css.icon} size={iconSize.sm} />
 				Опис: <span className={css.textFieldValue}>{description}</span>
 			</p>
-
 			<h4 className={css.imageTitles}>
 				<GiAirplaneDeparture className={css.icon} size={iconSize.sm} />
 				Рекламна модель:
@@ -128,13 +118,11 @@ export default function Planes({
 				alt='Promotional model'
 				className={css.promoImage}
 			/>
-
 			<h4 className={css.imageTitles}>
 				<CiAirportSign1 className={css.icon} size={iconSize.sm} />
 				Реальна модель:
 			</h4>
 			{/* //? Блок зображень без модальнич вікон */}
-
 			{/* <div className={css.imageContainer}>
 				{urlActual.map((item, index) => (
 					<img
