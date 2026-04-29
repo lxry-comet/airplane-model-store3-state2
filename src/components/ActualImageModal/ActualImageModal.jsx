@@ -53,7 +53,7 @@ export class ActualImageModal extends Component {
 	
 	const { open, index } = this.state;
 
-	console.log('Images: ', images);
+	// console.log('Images: ', images);
 
 	 //! Масив об'єктів зображень для Lightbox
 	// const slides = images.map((src) => ({ src }));
