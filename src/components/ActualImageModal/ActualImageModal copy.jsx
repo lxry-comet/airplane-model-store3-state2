@@ -20,6 +20,7 @@ import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails";
 import "yet-another-react-lightbox/plugins/thumbnails.css";
 
 import css from './ActualImageModal.module.css';
+import { te } from 'date-fns/locale'
 
 export class ActualImageModal extends Component {
 
@@ -68,20 +69,26 @@ export class ActualImageModal extends Component {
 	}));
   //! Перевірка: Якщо у нас images це масив, то використовуємо images.map((item, i) => (), якщо ні то template
     return (
-			<div className={css.imageContainer}>
-				{images.map((item, i) => (
+        <div className={css.imageContainer}>
+				{ typeof images ===  "object" 
+          ? images.map((item, i) => (
 					<img
 						key={i}
 						src={item}
 						alt={`${briefName} actual view ${i + 1}`}
-						className={
-              images.length === 1
-              ?`${css.actualImageTemplate}`
-              : `${css.actualImage}`
-            }
+						className={css.actualImage}
 						onClick={() => this.openLightbox(i)}
 					/>
-				))}
+				))	 
+        : <img
+						// key={i}
+						src={images}
+						// alt={`${briefName} actual view ${i + 1}`}
+						className={css.actualImageTemplate}
+						// onClick={() => this.openLightbox(i)}
+					/>
+      
+}
 				<Lightbox
           open={open}
           close={this.closeLightbox}
@@ -119,9 +126,10 @@ export class ActualImageModal extends Component {
           }}
 
 					plugins={[Fullscreen, Zoom, Download, Slideshow, Counter, Captions, Thumbnails]}
-
 				/>
-			</div>
+			  </div>
+
+
 		)
 	};
 };

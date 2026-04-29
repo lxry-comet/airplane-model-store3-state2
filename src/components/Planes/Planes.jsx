@@ -36,7 +36,7 @@ export default function Planes({
 	bgCardTitle,
 	urlMain = defaultImage,
 	urlPromotional,
-	urlActual = template,
+	urlActual = [template],
 	urlActualFull = [],
 	nameBrief,
 	nameFull,
