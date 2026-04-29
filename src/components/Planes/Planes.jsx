@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
-import defaultImage from '../default.jpg'
+import defaultImage from './default.jpg'
+import template from './template-out-of-stock.jpg'
 import css from './Planes.module.css'
 import {ActualImageModal} from '@/components/ActualImageModal/ActualImageModal.jsx' 
 
@@ -35,7 +36,7 @@ export default function Planes({
 	bgCardTitle,
 	urlMain = defaultImage,
 	urlPromotional,
-	urlActual = [],
+	urlActual = template,
 	urlActualFull = [],
 	nameBrief,
 	nameFull,
@@ -140,13 +141,18 @@ export default function Planes({
 			nameFull={nameFull}
 			description={description}
 			/>
-			<button className={css.button} type='button'>
+			
+			<button className={
+				urlActual === template
+				? `${css.button} ${css.buttonTemplate}`
+				: `${css.button}`
+			} type='button'>
 				Додати до кошику
 			</button>
 		</>
 	)
 }
-
+// ! Якщо urlActual дорівнює template, то кнопка неактивна, в іншомувипадку активна (має задану стилізацію). 
 Planes.propTypes = {
 	urlMain: PropTypes.string,
 	urlPromotional: PropTypes.string.isRequired,
@@ -162,3 +168,7 @@ Planes.propTypes = {
 	start: PropTypes.number,
 	end: PropTypes.number
 }
+// ! 4. Додавання функціоналу "Немає в наявності" в застосунку "Магазин літаків"
+// 4.1 Зображення "Немає в наявності", займає все місце блоку реальньна модель
+// 4.2 при натискання зображення не має в наявності, не відбуважться нічого. 
+// 4.3 Кнопка 'додати до кошику', має сірий фон і не активна

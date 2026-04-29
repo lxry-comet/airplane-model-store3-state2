@@ -83,3 +83,10 @@
 		inset 0 0 16px 8px rgba(0, 0, 0, 0.3),
 		0 8px 16px rgba(0, 0, 0, 0.9);
 }
+.buttonTemplate{
+	background-color: #ccc;
+	cursor: not-allowed;
+		box-shadow: none;
+		text-shadow: none;
+		color: #212121;
+}

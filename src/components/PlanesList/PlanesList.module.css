@@ -28,14 +28,22 @@
   background-color: #d6f1ff;
 }
 .planesItemWWIGoldenAge{
+  composes: listItem;
+
 background-color: #ffd1d1;
 }
 .planesItemWWII{
+  composes: listItem;
+
 background-color:#ffdb92 ;
 }
 .planesItemJetAge{
+  composes: listItem;
+
 background-color:#d2fdbd ;
 }
 .planesItemCurrentAge{
+  composes: listItem;
+
 background-color:#d6f1ff ;
 }
