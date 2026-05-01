@@ -48,7 +48,8 @@ export class ActualImageModal extends Component {
 		imagesFull, 
 		briefName, 
 		nameFull, 
-		description
+		description,
+    templateImage
 	} = 	this.props;
 	
 	const { open, index } = this.state;
@@ -60,6 +61,9 @@ export class ActualImageModal extends Component {
 	
   // if (imagesFull.length === 0) imagesFull.push(...images); 
   // //todo: тимчасово, бо немає всіх imagesFull
+
+  
+  console.log('Template: ', templateImage);
 
 	const slides = (imagesFull.length ? imagesFull : images).map((src) => ({ 
 			src,
@@ -75,11 +79,17 @@ export class ActualImageModal extends Component {
 						src={item}
 						alt={`${briefName} actual view ${i + 1}`}
 						className={
-              images.length === 1
-              ?`${css.actualImageTemplate}`
+              images[0] === templateImage
+              ? `${css.actualImageTemplate}`
               : `${css.actualImage}`
             }
-						onClick={() => this.openLightbox(i)}
+						// onClick={() => this.openLightbox(i)} 
+						onClick = {
+              images[0] === templateImage
+
+              ? null
+              : () => this.openLightbox(i)
+            }
 					/>
 				))}
 				<Lightbox
@@ -125,3 +135,4 @@ export class ActualImageModal extends Component {
 		)
 	};
 };
+// ! Змінити реакцію на клік по блоку зображення. 

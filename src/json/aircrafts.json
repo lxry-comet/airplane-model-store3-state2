@@ -90,7 +90,7 @@
       "colorsPrice": {
         "main": 840
       },
-      "actualImages": [
+      "_actualImages": [
         "/airplane-model-store3-state2/images/planes-actual/ah-64-comp-1.jpg",
         "/airplane-model-store3-state2/images/planes-actual/ah-64-comp-2.jpg",
         "/airplane-model-store3-state2/images/planes-actual/ah-64-comp-3.jpg",
@@ -128,10 +128,7 @@
         "main72": "_820"
       },
       "actualImages": [
-        "/airplane-model-store3-state2/images/planes-actual/j-20-comp-1.jpg",
-        "/airplane-model-store3-state2/images/planes-actual/j-20-comp-2.jpg",
-        "/airplane-model-store3-state2/images/planes-actual/j-20-comp-3.jpg",
-        "/airplane-model-store3-state2/images/planes-actual/j-20-comp-4.jpg"
+        "/airplane-model-store3-state2/images/planes-actual/j-20-comp-1.jpg"
       ]
     }
   },

@@ -63,6 +63,8 @@ export default function Planes({
         return 'itemTitle';
 		}
 	}
+  console.log('Template Plains.jsx: ', template);
+
 	return (
 		<>
 			<h3 className={css[getBgColorCardTitle(bgCardTitle)]}>
@@ -140,11 +142,16 @@ export default function Planes({
 			briefName={nameBrief}
 			nameFull={nameFull}
 			description={description}
+			templateImage={template}
 			/>
 			
-			<button className={
-				urlActual === template
-				? `${css.button} ${css.buttonTemplate}`
+			<button 
+			disabled={urlActual[0] === template}
+			className={
+				//! Бокування кнопки, якщо немає в наявності
+
+				urlActual[0] === template
+				? `${css.button}  ${css.buttonTemplate}`
 				: `${css.button}`
 			} type='button'>
 				Додати до кошику
