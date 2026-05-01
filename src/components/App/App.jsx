@@ -24,7 +24,14 @@ import css from './App.module.css'
 
 export class App extends Component {
 
-
+	// ! План створення кошику:
+	// * [1] Отримати реакцію на кнопку "Додати до кошику" (onClick)
+	// * [2] Стврити в стейті масив індексів обраних елементів
+	// * [3] З-за допомогою реакції на кнопку наповнювати масив індексів обраних елементів
+	// * [4] Створити масив обраних елементів згідно з масиву індексів
+	//  [5] Створити кнопку КОШИК
+	// ? [5.1] Стилізувати кнопку КОШИК згідно з дизайном
+	// * [6] При натисканы на кнопку кошиу, відбувається рендер масиву обраних елементів
 
 	state = {
 		
@@ -95,6 +102,16 @@ export class App extends Component {
 			bgColor: 'lightgreen'
 		})
 	}
+	cartFiltration = () => {
+		console.log('Кошик')
+				this.setState({
+
+			// aircraftsArray: helicopterArray,
+			aircraftTitle: 'Кошик',
+			activeButton:'cartButton',
+			bgColor: '#ff991c91'
+		})
+	}
 	render() {
 		return (
 			<>
@@ -131,6 +148,7 @@ export class App extends Component {
 					onBiplanes={this.biplaneFiltration}
           onHelicopters={this.helicopterFiltration}
 					buttonActive={this.state.activeButton}
+					onCart={this.cartFiltration}
 				/>
 
 				<Section

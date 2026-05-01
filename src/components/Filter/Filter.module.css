@@ -48,6 +48,10 @@
 .buttonHelicopterFiltration {
     composes: button;
     border: 6px #9accf5 solid;
+}   
+.buttonCartFiltration {
+    composes: button;
+    border: 6px #ff653b solid;
 }
 /*//! Візуалізація активної кнопки */
 .active {

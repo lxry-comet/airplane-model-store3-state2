@@ -1,6 +1,6 @@
 import css from './Filter.module.css'
 
-export function Filter({ onAll, onPlanes, onBiplanes, onHelicopters, buttonActive}) {
+export function Filter({ onAll, onPlanes, onBiplanes, onHelicopters, buttonActive, onCart}) {
 	// console.log('ButtonActive', buttonActive)
 
 	// const allButton = buttonActive === 'allButton' ? `${css.buttonAllFiltration} ${css.active}` : `${css.buttonAllFiltration}`;
@@ -54,6 +54,16 @@ export function Filter({ onAll, onPlanes, onBiplanes, onHelicopters, buttonActiv
 				onClick={onHelicopters}
 			>
 				Вертольоти
+			</button>
+			<button
+				className={
+					buttonActive === 'cartButton' 
+					? `${css.buttonCartFiltration} ${css.active}` 
+					: `${css.buttonCartFiltration}`}
+				type='button'
+				onClick={onCart}
+			>
+				  Кошик
 			</button>
 		</div>
 	)

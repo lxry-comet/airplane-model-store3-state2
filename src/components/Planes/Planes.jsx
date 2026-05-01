@@ -49,6 +49,8 @@ export default function Planes({
 	start,
 	end
 }) {
+
+
 	const different = getManufacturingYears(start, end)
 
 	function getBgColorCardTitle(type) {
