@@ -125,7 +125,6 @@ export class ColorBox extends Component {
 		}
 	render(){
 
-
 		const {colorBoxes} = this.props;
 		const {
 			// activeButtonIndex, 

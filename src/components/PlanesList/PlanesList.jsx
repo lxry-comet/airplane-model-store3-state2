@@ -4,7 +4,7 @@ import { getBgColor, } from '@/utils'
 import css from "./PlanesList.module.css"
 
 
-function PlanesList({ items }) {
+function PlanesList({ items, onActiveId }) {
 	return (
 		<ul
 			className={css.list}
@@ -16,6 +16,7 @@ function PlanesList({ items }) {
 					key={item.id}
 				>
 					<Planes
+						aircraftId={item.id}
 						bgCardTitle={item.aircraftType}
 						urlMain={item.url.main}
 						urlPromotional={item.url.promotional}
@@ -31,6 +32,7 @@ function PlanesList({ items }) {
 						description={item.info.description}
 						start={item.manufacturing.start}
 						end={item.manufacturing.end}
+						onActiveId={onActiveId}
 					/>
 				</li>
 			))}

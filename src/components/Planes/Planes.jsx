@@ -33,6 +33,7 @@ import { iconSize, iconColor } from '@/constants'
 import { getManufacturingYears } from '@/utils/'
 
 export default function Planes({
+	aircraftId,
 	bgCardTitle,
 	urlMain = defaultImage,
 	urlPromotional,
@@ -47,7 +48,8 @@ export default function Planes({
 	price,
 	description,
 	start,
-	end
+	end,
+	onActiveId
 }) {
 
 
@@ -148,19 +150,26 @@ export default function Planes({
 			/>
 			
 			<button 
-			disabled={urlActual[0] === template}
 			className={
 				//! Бокування кнопки, якщо немає в наявності
 
 				urlActual[0] === template
 				? `${css.button}  ${css.buttonTemplate}`
 				: `${css.button}`
-			} type='button'>
+			}
+			// onClick={() => console.log('Додано до кошику:', aircraftId)}
+			onClick={() => onActiveId(aircraftId)}
+			type='button'
+			disabled={urlActual[0] === template}
+			>
 				Додати до кошику
 			</button>
 		</>
 	)
 }
+// ! 
+
+
 // ! Якщо urlActual дорівнює template, то кнопка неактивна, в іншомувипадку активна (має задану стилізацію). 
 Planes.propTypes = {
 	urlMain: PropTypes.string,

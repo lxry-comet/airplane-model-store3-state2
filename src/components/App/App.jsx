@@ -34,16 +34,12 @@ export class App extends Component {
 	// * [6] При натисканы на кнопку кошиу, відбувається рендер масиву обраних елементів
 
 	state = {
-		
+	
 		aircraftsArray: aircrafts,
 		aircraftTitle: 'Магазин моделей літаків та вертольотів',
 		activeButton: 'allButton',
-		// isAircrafts: false,
-		// isPlain: false,
-		// isHelicopter: false,
-
 		bgColor: 'white',
-
+		aircraftId: null //! "id" обраного елемента
 	}
 
 	allFiltration = () => {
@@ -57,7 +53,6 @@ export class App extends Component {
 			bgColor: 'lightgreen'
 		})
 		console.log("aircrafts", aircrafts);
-
 	}
 	planeFiltration = () => {
 		console.log('planeFiltration')
@@ -112,7 +107,27 @@ export class App extends Component {
 			bgColor: '#ff991c91'
 		})
 	}
+	getActiveId = id =>{
+		this.setState({
+			aircraftId: id
+		})
+	}
 	render() {
+		
+		//! [1] Блок диструктуризації props та state 
+		const {
+		aircraftsArray, // aircrafts,
+		aircraftTitle, // 'Магазин моделей літаків та вертольотів',
+		activeButton, // 'allButton',
+		bgColor, // 'white',
+		aircraftId // "id" обраного елемента
+		} = this.state;
+
+		//! [2] Блок обчислювальних дaних 
+
+		//! [3] Блок консолей необхідних даних 
+		console.log('AircraftsArray: ', aircraftsArray);
+		console.log('#️⃣ aircraftId State: ', aircraftId);
 		return (
 			<>
 				{/*//!  Filter */}
@@ -155,7 +170,10 @@ export class App extends Component {
 					bgColor={this.state.bgColor}
 					title={this.state.aircraftTitle}
 				>
-					<PlanesList items={this.state.aircraftsArray} />
+					<PlanesList 
+					items={this.state.aircraftsArray} 
+					onActiveId={this.getActiveId}
+					/>
 				</Section>
 
 				{/* <Section 
