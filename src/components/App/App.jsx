@@ -39,7 +39,8 @@ export class App extends Component {
 		aircraftTitle: 'Магазин моделей літаків та вертольотів',
 		activeButton: 'allButton',
 		bgColor: 'white',
-		aircraftId: null //! "id" обраного елемента
+		aircraftId: null, //! "id" обраного елемента
+		indicesSelectedModels: [] //! масив індексів обраних моделей
 	}
 
 	allFiltration = () => {
@@ -120,14 +121,16 @@ export class App extends Component {
 		aircraftTitle, // 'Магазин моделей літаків та вертольотів',
 		activeButton, // 'allButton',
 		bgColor, // 'white',
-		aircraftId // "id" обраного елемента
+		aircraftId, // "id" обраного елемента
+		indicesSelectedModels // масив індексів обраних моделей
 		} = this.state;
 
 		//! [2] Блок обчислювальних дaних 
 
 		//! [3] Блок консолей необхідних даних 
 		console.log('AircraftsArray: ', aircraftsArray);
-		console.log('#️⃣ aircraftId State: ', aircraftId);
+		console.log('🆔 aircraftId State: ', aircraftId);
+		console.log('Ⓜ️ Indices Selected Models: ', indicesSelectedModels);
 		return (
 			<>
 				{/*//!  Filter */}
