@@ -149,12 +149,17 @@ export class App extends Component {
 		indicesSelectedModels // масив індексів обраних моделей
 		} = this.state;
 
+
 		//! [2] Блок обчислювальних дaних 
+		//* Кількість обраних моделей
+		const numberOfSelectedModels = indicesSelectedModels.length;
 
 		//! [3] Блок консолей необхідних даних 
 		console.log('AircraftsArray: ', aircraftsArray);
 		console.log('🆔 aircraftId State: ', aircraftId);
 		console.log('Ⓜ️ Indices Selected Models: ', indicesSelectedModels);
+
+		console.log('Кількість обраних моделей: ', numberOfSelectedModels);
 		return (
 			<>
 				{/*//!  Filter */}
@@ -191,6 +196,8 @@ export class App extends Component {
           onHelicopters={this.helicopterFiltration}
 					buttonActive={this.state.activeButton}
 					onCart={this.cartFiltration}
+					numberOfSelectedModels={numberOfSelectedModels}
+					
 				/>
 
 				<Section

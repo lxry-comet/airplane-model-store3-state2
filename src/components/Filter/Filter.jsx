@@ -1,6 +1,14 @@
 import css from './Filter.module.css'
 
-export function Filter({ onAll, onPlanes, onBiplanes, onHelicopters, buttonActive, onCart}) {
+export function Filter({
+	onAll,
+	onPlanes,
+	onBiplanes,
+	onHelicopters,
+	buttonActive,
+	onCart,
+	numberOfSelectedModels
+}) {
 	// console.log('ButtonActive', buttonActive)
 
 	// const allButton = buttonActive === 'allButton' ? `${css.buttonAllFiltration} ${css.active}` : `${css.buttonAllFiltration}`;
@@ -13,23 +21,26 @@ export function Filter({ onAll, onPlanes, onBiplanes, onHelicopters, buttonActiv
 
 	return (
 		<div className={css.filterBox}>
-			
-			<button 
-			//* Треба щоб клас нейм набуває значення: `${css.buttonAllFiltration} ${css.active}` коли кнопка натиснута. Коли не активна, набуває значення: '${css.buttonAllFiltration}'.
+			<button
+				//* Треба щоб клас нейм набуває значення: `${css.buttonAllFiltration} ${css.active}` коли кнопка натиснута. Коли не активна, набуває значення: '${css.buttonAllFiltration}'.
 
-			className={
-				buttonActive === 'allButton' 
-				? `${css.buttonAllFiltration} ${css.active}` 
-				: `${css.buttonAllFiltration}`} 
-				type='button' onClick={onAll}>
+				className={
+					buttonActive === 'allButton'
+						? `${css.buttonAllFiltration} ${css.active}`
+						: `${css.buttonAllFiltration}`
+				}
+				type='button'
+				onClick={onAll}
+			>
 				ВСІ
 			</button>
 
 			<button
 				className={
-					buttonActive === 'planeButton' 
-					? `${css.buttonPlaneFiltration} ${css.active}` 
-					: `${css.buttonPlaneFiltration}`}
+					buttonActive === 'planeButton'
+						? `${css.buttonPlaneFiltration} ${css.active}`
+						: `${css.buttonPlaneFiltration}`
+				}
 				type='button'
 				onClick={onPlanes}
 			>
@@ -37,9 +48,10 @@ export function Filter({ onAll, onPlanes, onBiplanes, onHelicopters, buttonActiv
 			</button>
 			<button
 				className={
-					buttonActive === 'biplaneButton' 
-					? `${css.buttonBiplaneFiltration} ${css.active}` 
-					: `${css.buttonBiplaneFiltration}`}
+					buttonActive === 'biplaneButton'
+						? `${css.buttonBiplaneFiltration} ${css.active}`
+						: `${css.buttonBiplaneFiltration}`
+				}
 				type='button'
 				onClick={onBiplanes}
 			>
@@ -47,9 +59,10 @@ export function Filter({ onAll, onPlanes, onBiplanes, onHelicopters, buttonActiv
 			</button>
 			<button
 				className={
-					buttonActive === 'helicopterButton' 
-					? `${css.buttonHelicopterFiltration} ${css.active}` 
-					: `${css.buttonHelicopterFiltration}`}
+					buttonActive === 'helicopterButton'
+						? `${css.buttonHelicopterFiltration} ${css.active}`
+						: `${css.buttonHelicopterFiltration}`
+				}
 				type='button'
 				onClick={onHelicopters}
 			>
@@ -57,14 +70,23 @@ export function Filter({ onAll, onPlanes, onBiplanes, onHelicopters, buttonActiv
 			</button>
 			<button
 				className={
-					buttonActive === 'cartButton' 
-					? `${css.buttonCartFiltration} ${css.active}` 
-					: `${css.buttonCartFiltration}`}
+					buttonActive === 'cartButton'
+						? `${css.buttonCartFiltration} ${css.active}`
+						: `${css.buttonCartFiltration}`
+				}
 				type='button'
 				onClick={onCart}
 			>
-				  Кошик &nbsp;
-					<span className={css.cartItemCount}>{1}</span>
+				Кошик &nbsp;
+				<span
+					className={
+						numberOfSelectedModels === 0
+							? `${css.cartItemCount} `
+							: `${css.cartItemCount} ${css.cartItemCountNone}`
+					}
+				>
+					{numberOfSelectedModels}
+				</span>
 			</button>
 		</div>
 	)

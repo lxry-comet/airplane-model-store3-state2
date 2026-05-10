@@ -71,5 +71,10 @@
     align-items: center;
    border: 2px solid orangered;
     border-radius: 50%;
+    color: white;
 
+}
+.cartItemCountNone{
+    background-color: orangered;
+    color: yellow;
 }
