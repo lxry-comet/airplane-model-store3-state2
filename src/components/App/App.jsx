@@ -21,6 +21,7 @@ import PlanesList from '@/components/PlanesList/PlanesList.jsx'
 import Section from '@/components/Section/Section.jsx'
 
 import css from './App.module.css'
+import { id } from 'date-fns/locale'
 
 export class App extends Component {
 
@@ -41,6 +42,7 @@ export class App extends Component {
 		bgColor: 'white',
 		aircraftId: null, //! "id" обраного елемента
 		indicesSelectedModels: [] //! масив індексів обраних моделей
+
 	}
 
 	allFiltration = () => {
@@ -153,11 +155,14 @@ export class App extends Component {
 		//! [2] Блок обчислювальних дaних 
 		//* Кількість обраних моделей
 		const numberOfSelectedModels = indicesSelectedModels.length;
-
+		const selectedModels = indicesSelectedModels.flatMap((id) => 
+			aircrafts.filter((element) => element.id === id));
+		
 		//! [3] Блок консолей необхідних даних 
 		console.log('AircraftsArray: ', aircraftsArray);
 		console.log('🆔 aircraftId State: ', aircraftId);
 		console.log('Ⓜ️ Indices Selected Models: ', indicesSelectedModels);
+		console.log('Selected Models: ', selectedModels);
 
 		console.log('Кількість обраних моделей: ', numberOfSelectedModels);
 		return (
