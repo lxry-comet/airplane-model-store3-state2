@@ -96,24 +96,8 @@ export default function Planes({
       <button
       className="button"
         type="button"
-        // style={{
-        //   width: "70%",
-        //   margin: "20px auto",
-        //   padding: "16px 32px",
-        //   display: "inline-block",
-        //   alignItems: "center",
-        //   fontFmily: 'Franklin Gothic Medium, Arial Narrow',
-        //   fontWeight: 700,
-        //   fontSize: "1.5rem",
-        //   borderRadius: "12px",
-        //   color: "#ffffff",
-        //   cursor: "pointer",
-        //   backgroundColor: "#008080",
-        //   textShadow: "1px 1px 2px rgba(0, 0, 0, 0.4), 2px 2px 4px rgba(0, 0, 0, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.1)",
-        //   boxShadow: "inset 0 0 16px 8px rgba(0, 0, 0, 0.3), 0 8px 16px rgba(0, 0, 0, 0.9)",
-        // }}
       >
-        Додати до кошику
+        Додати до кошику 
       </button>
     </>
   );

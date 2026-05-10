@@ -50,6 +50,10 @@
     border: 6px #9accf5 solid;
 }   
 .buttonCartFiltration {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     composes: button;
     border: 6px #ff653b solid;
 }
@@ -58,4 +62,14 @@
     color: #c51900;
     box-shadow: none;
     outline: 1px #902a00 solid;
+}
+.cartItemCount{
+   width: 40px;
+   height: 40px;
+   display: flex;
+    justify-content: center;
+    align-items: center;
+   border: 2px solid orangered;
+    border-radius: 50%;
+
 }

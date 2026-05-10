@@ -63,7 +63,7 @@ export class ActualImageModal extends Component {
   // //todo: тимчасово, бо немає всіх imagesFull
 
   
-  console.log('Template: ', templateImage);
+  // console.log('Template: ', templateImage);
 
 	const slides = (imagesFull.length ? imagesFull : images).map((src) => ({ 
 			src,

@@ -67,7 +67,7 @@ export default function Planes({
         return 'itemTitle';
 		}
 	}
-  console.log('Template Plains.jsx: ', template);
+  // console.log('Template Plains.jsx: ', template);
 
 	return (
 		<>

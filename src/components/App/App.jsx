@@ -112,7 +112,31 @@ export class App extends Component {
 		this.setState({
 			aircraftId: id
 		})
+
+					if ( this.state.indicesSelectedModels.includes(id)){
+				//! 1 Масив this.state.indicesSelectedModels
+				//! 2 Індекс - id
+				//! 3 З масиву this.state.indicesSelectedModels потрібно видалити елемент з 	індексом який дорівнює id
+						//activeButtonid: id, //! це буде останній активний елемент. 
+				this.setState({
+					indicesSelectedModels: this.state.indicesSelectedModels.filter((item) => item !== id), 
+				}) 
+
+				}
+			else{
+				//! 1 Масив this.state.indicesSelectedModels
+				//! 2 Індекс - id
+				//! 3 З масиву this.state.indicesSelectedModels потрібно додати елемент з індексом який дорівнює id
+				
+					//? Створюємо новий масив, у який копіюємо всі елементи зі старого масиву та додаємо до них новий елемент
+				this.setState({
+					// activeButtonid: id,
+        	indicesSelectedModels: this.state.indicesSelectedModels.concat(id).sort((a, b) => a - b)
+				})
+			}
 	}
+
+	
 	render() {
 		
 		//! [1] Блок диструктуризації props та state 
