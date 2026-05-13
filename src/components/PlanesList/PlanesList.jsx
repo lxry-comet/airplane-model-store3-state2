@@ -3,8 +3,9 @@ import Planes from '@/components/Planes/Planes.jsx'
 import { getBgColor, } from '@/utils'
 import css from "./PlanesList.module.css"
 
+// ! При натисканні на кнопки фільтрації крім кошику, береться до обробки масив items <13>. При натисканні на кнопку кошик в нас береться до обробки масив itemsCart <13> 
 
-function PlanesList({ items, onActiveId, indicesSelectedModels }) {
+function PlanesList({ items, itemsCart, onActiveId, indicesSelectedModels }) {
 	return (
 		<ul
 			className={css.list}

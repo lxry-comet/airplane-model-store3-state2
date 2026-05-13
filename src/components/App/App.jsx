@@ -107,7 +107,7 @@ export class App extends Component {
 		console.log('Кошик')
 		console.log('Selected Models: ', selectedModels);
 
-				this.setState({
+		this.setState({
 			aircraftsArray: selectedModels,
 			aircraftTitle: 'Кошик',
 			activeButton:'cartButton',
@@ -118,7 +118,6 @@ export class App extends Component {
 		this.setState({
 			aircraftId: id
 		})
-
 					if ( this.state.indicesSelectedModels.includes(id)){
 				//! 1 Масив this.state.indicesSelectedModels
 				//! 2 Індекс - id
@@ -212,7 +211,9 @@ export class App extends Component {
 					title={this.state.aircraftTitle}
 				>
 					<PlanesList 
-					items={this.state.aircraftsArray} 
+					items={this.state.aircraftsArray}
+					itemsCart={this.state.indicesSelectedModels.flatMap((id) => 
+			aircrafts.filter((element) => element.id === id))}  
 					indicesSelectedModels={indicesSelectedModels}
 					onActiveId={this.getActiveId}
 					/>
