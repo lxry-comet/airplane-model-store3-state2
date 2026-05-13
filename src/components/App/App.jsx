@@ -60,7 +60,7 @@ export class App extends Component {
 	planeFiltration = () => {
 		console.log('planeFiltration')
 
-		const planesArray = aircrafts.filter(item => item.aircraftType === "plane" || item.aircraftType === "biplane");
+		const planesArray = aircrafts.filter(item => item.aircraftType === "plane");
 
 		console.log("planesArray", planesArray);
 
