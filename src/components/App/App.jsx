@@ -101,10 +101,14 @@ export class App extends Component {
 		})
 	}
 	cartFiltration = () => {
+		const selectedModels = this.state.indicesSelectedModels.flatMap((id) => 
+			aircrafts.filter((element) => element.id === id));
+		
 		console.log('Кошик')
-				this.setState({
+		console.log('Selected Models: ', selectedModels);
 
-			// aircraftsArray: helicopterArray,
+				this.setState({
+			aircraftsArray: selectedModels,
 			aircraftTitle: 'Кошик',
 			activeButton:'cartButton',
 			bgColor: '#ff991c91'
@@ -155,14 +159,12 @@ export class App extends Component {
 		//! [2] Блок обчислювальних дaних 
 		//* Кількість обраних моделей
 		const numberOfSelectedModels = indicesSelectedModels.length;
-		const selectedModels = indicesSelectedModels.flatMap((id) => 
-			aircrafts.filter((element) => element.id === id));
 		
 		//! [3] Блок консолей необхідних даних 
 		console.log('AircraftsArray: ', aircraftsArray);
 		console.log('🆔 aircraftId State: ', aircraftId);
 		console.log('Ⓜ️ Indices Selected Models: ', indicesSelectedModels);
-		console.log('Selected Models: ', selectedModels);
+		// console.log('Selected Models: ', selectedModels);
 
 		console.log('Кількість обраних моделей: ', numberOfSelectedModels);
 		return (
