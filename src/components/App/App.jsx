@@ -211,6 +211,7 @@ export class App extends Component {
 				>
 					<PlanesList 
 					items={this.state.aircraftsArray} 
+					indicesSelectedModels={indicesSelectedModels}
 					onActiveId={this.getActiveId}
 					/>
 				</Section>

@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import defaultImage from './default.jpg'
 import template from './template-out-of-stock.jpg'
 import css from './Planes.module.css'
-import {ActualImageModal} from '@/components/ActualImageModal/ActualImageModal.jsx' 
+import { ActualImageModal } from '@/components/ActualImageModal/ActualImageModal.jsx'
 
 import {
 	FaMapMarkerAlt,
@@ -34,6 +34,7 @@ import { getManufacturingYears } from '@/utils/'
 
 export default function Planes({
 	aircraftId,
+	indicesSelectedModels,
 	bgCardTitle,
 	urlMain = defaultImage,
 	urlPromotional,
@@ -51,8 +52,6 @@ export default function Planes({
 	end,
 	onActiveId
 }) {
-
-
 	const different = getManufacturingYears(start, end)
 
 	function getBgColorCardTitle(type) {
@@ -63,11 +62,11 @@ export default function Planes({
 				return 'biplaneTitle'
 			case 'helicopter':
 				return 'helicopterTitle'
-      default:
-        return 'itemTitle';
+			default:
+				return 'itemTitle'
 		}
 	}
-  // console.log('Template Plains.jsx: ', template);
+	// console.log('Template Plains.jsx: ', template);
 
 	return (
 		<>
@@ -140,37 +139,45 @@ export default function Planes({
 					/>
 				))}
 			</div> */}
-			<ActualImageModal 
-			images={urlActual} 
-			imagesFull={urlActualFull}
-			briefName={nameBrief}
-			nameFull={nameFull}
-			description={description}
-			templateImage={template}
+			<ActualImageModal
+				images={urlActual}
+				imagesFull={urlActualFull}
+				briefName={nameBrief}
+				nameFull={nameFull}
+				description={description}
+				templateImage={template}
 			/>
-			
-			<button 
-			className={
-				//! Бокування кнопки, якщо немає в наявності
 
-				urlActual[0] === template
-				? `${css.button}  ${css.buttonTemplate}`
-				: `${css.button}`
-			}
-			// onClick={() => console.log('Додано до кошику:', aircraftId)}
-			onClick={() => onActiveId(aircraftId)}
-			type='button'
-			disabled={urlActual[0] === template}
+			<button
+				className={
+					//! Бокування кнопки, якщо немає в наявності
+
+					urlActual[0] === template
+						? `${css.button}  ${css.buttonTemplate}`
+						// : `${css.button}`
+						: indicesSelectedModels.some(item => item === aircraftId) 
+
+							? `${css.button} ${css.inCart}`
+							: css.button
+				}
+				// onClick={() => console.log('Додано до кошику:', aircraftId)}
+				onClick={() => onActiveId(aircraftId)}
+				type='button'
+				disabled={urlActual[0] === template}
 			>
-				Додати до кошику
+				{
+					
+					indicesSelectedModels.some(item => item === aircraftId) 
+					? '❌ Видалити із кошика'
+					: '✅ Додати до кошику' 
+				}
 			</button>
 		</>
 	)
 }
-// ! 
+// !
 
-
-// ! Якщо urlActual дорівнює template, то кнопка неактивна, в іншомувипадку активна (має задану стилізацію). 
+// ! Якщо urlActual дорівнює template, то кнопка неактивна, в іншомувипадку активна (має задану стилізацію).
 Planes.propTypes = {
 	urlMain: PropTypes.string,
 	urlPromotional: PropTypes.string.isRequired,
@@ -188,5 +195,5 @@ Planes.propTypes = {
 }
 // ! 4. Додавання функціоналу "Немає в наявності" в застосунку "Магазин літаків"
 // 4.1 Зображення "Немає в наявності", займає все місце блоку реальньна модель
-// 4.2 при натискання зображення не має в наявності, не відбуважться нічого. 
+// 4.2 при натискання зображення не має в наявності, не відбуважться нічого.
 // 4.3 Кнопка 'додати до кошику', має сірий фон і не активна
