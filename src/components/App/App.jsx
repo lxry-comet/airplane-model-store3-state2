@@ -101,14 +101,16 @@ export class App extends Component {
 		})
 	}
 	cartFiltration = () => {
-		const selectedModels = this.state.indicesSelectedModels.flatMap((id) => 
-			aircrafts.filter((element) => element.id === id));
-		
+		// const selectedModels = this.state.indicesSelectedModels.flatMap((id) => aircrafts.filter((element) => element.id === id));
+
+		//? Коли натиснута кнопка кошик, aircraftsArray треба замінити з aircrafts на selectedModels
+		//? А коли вона не активна то в aircraftsArray кладемо значення яке вираховується кожною кнопкою фільтрів (окрім)
+
 		console.log('Кошик')
-		console.log('Selected Models: ', selectedModels);
+		// console.log('Selected Models: ', selectedModels);
 
 		this.setState({
-			aircraftsArray: selectedModels,
+			// aircraftsArray: selectedModels,
 			aircraftTitle: 'Кошик',
 			activeButton:'cartButton',
 			bgColor: '#ff991c91'
@@ -126,21 +128,20 @@ export class App extends Component {
 				this.setState({
 					indicesSelectedModels: this.state.indicesSelectedModels.filter((item) => item !== id), 
 				}) 
-
 				}
 			else{
 				//! 1 Масив this.state.indicesSelectedModels
 				//! 2 Індекс - id
 				//! 3 З масиву this.state.indicesSelectedModels потрібно додати елемент з індексом який дорівнює id
-				
-					//? Створюємо новий масив, у який копіюємо всі елементи зі старого масиву та додаємо до них новий елемент
+	
+					//? Створюємо новий масив, у який копіюмо всі елементи зі старого масиву та додаємо до них новий елемент
 				this.setState({
 					// activeButtonid: id,
         	indicesSelectedModels: this.state.indicesSelectedModels.concat(id).sort((a, b) => a - b)
 				})
 			}
 	}
-
+//* Для того щоб функція getActiveId, впливала (перерендирила його) на компонент planesList треба, щоб змінилися пропси які безпосередньо впливать на рендер цього компоненту 
 	
 	render() {
 		
@@ -159,11 +160,13 @@ export class App extends Component {
 		//* Кількість обраних моделей
 		const numberOfSelectedModels = indicesSelectedModels.length;
 		
+		const selectedModels = this.state.indicesSelectedModels.flatMap((id) => aircrafts.filter((element) => element.id === id));
+
 		//! [3] Блок консолей необхідних даних 
 		console.log('AircraftsArray: ', aircraftsArray);
 		console.log('🆔 aircraftId State: ', aircraftId);
 		console.log('Ⓜ️ Indices Selected Models: ', indicesSelectedModels);
-		// console.log('Selected Models: ', selectedModels);
+		console.log('Selected Models: ', selectedModels);
 
 		console.log('Кількість обраних моделей: ', numberOfSelectedModels);
 		return (
@@ -211,9 +214,13 @@ export class App extends Component {
 					title={this.state.aircraftTitle}
 				>
 					<PlanesList 
-					items={this.state.aircraftsArray}
-					itemsCart={this.state.indicesSelectedModels.flatMap((id) => 
-			aircrafts.filter((element) => element.id === id))}  
+					// items={this.state.aircraftsArray}
+					items={aircraftTitle === 'Кошик'
+						? selectedModels
+						: aircraftsArray
+					}
+					// itemsCart={this.state.indicesSelectedModels.flatMap((id) => aircrafts.filter((element) => element.id === id))}  
+					itemsCart={selectedModels}
 					indicesSelectedModels={indicesSelectedModels}
 					onActiveId={this.getActiveId}
 					/>
