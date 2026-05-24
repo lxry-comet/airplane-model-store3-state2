@@ -41,9 +41,32 @@ export class App extends Component {
 		activeButton: 'allButton',
 		bgColor: 'white',
 		aircraftId: null, //! "id" обраного елемента
-		indicesSelectedModels: [] //! масив індексів обраних моделей
+		// indicesSelectedModels: [] //! масив індексів обраних моделей
+		indicesSelectedModels: JSON.parse(localStorage.getItem("indicesSelectedModels")) || [],
 
 	}
+
+	// * 2 При першому завантажені якщо нічого не має  у властивість стейту, то створюємо пустий масив який записуємо у LocalStorage
+	componentDidMount() {
+		console.log('Спрацював componentDidMount');
+        const saved = localStorage.getItem("indicesSelectedModels");
+        if (!saved) {
+            localStorage.setItem("indicesSelectedModels", JSON.stringify([]));
+        }
+    };
+
+// * 3 При будь яких змінах властивості selectedButtonIdx, записуємо selectedButtonIdx у LocalStorage
+
+	componentDidUpdate(prevProps, prevState) {
+		console.log('Спрацював componentDidUpdate');
+
+        if (prevState.indicesSelectedModels !== this.state.indicesSelectedModels) {
+            localStorage.setItem(
+                "indicesSelectedModels",
+                JSON.stringify(this.state.indicesSelectedModels)
+            );
+        }
+    };
 
 	allFiltration = () => {
 		console.log('all')
