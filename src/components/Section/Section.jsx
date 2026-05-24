@@ -7,6 +7,7 @@ function Section({
   isOn = true, 
   bgColor, 
   title, 
+  numberOfSelectedModels,
   children 
 }) {
   return (
@@ -20,7 +21,9 @@ function Section({
         // className={`${css.title} ${css.lugrasimoBold}`}
         className={css.titleLugrasimoBold}
         >
-          {title}
+          { numberOfSelectedModels === 0 && title === 'Кошик' 
+      ? 'Кошик пустий' 
+      : title}
         </h2>} 
       {children}
     </section>}

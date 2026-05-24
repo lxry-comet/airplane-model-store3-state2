@@ -212,14 +212,34 @@ export class App extends Component {
 				<Section
 					bgColor={this.state.bgColor}
 					title={this.state.aircraftTitle}
+					numberOfSelectedModels={numberOfSelectedModels}
+
 				>
+					
 					<PlanesList 
 					// items={this.state.aircraftsArray}
-					items={aircraftTitle === 'Кошик'
+
+
+
+					// items={aircraftTitle === 'Кошик'
+					// 	? selectedModels
+					// 	: aircraftsArray
+					// }
+
+						
+					// itemsCart={this.state.indicesSelectedModels.flatMap((id) => aircrafts.filter((element) => element.id === id))}  
+					
+					// ! перевірити кількість обраних моделей в  numberOfSelectedModels, якщо він === 0 то title === "Кошик пустий" і ul не ренберемо, а якщо numberOfSelectedModels є хочаб 1 обрана модель то тоді title === "Кошик" і ul ренберемо
+
+					items={
+						aircraftTitle === 'Кошик'
+						
 						? selectedModels
 						: aircraftsArray
 					}
-					// itemsCart={this.state.indicesSelectedModels.flatMap((id) => aircrafts.filter((element) => element.id === id))}  
+
+					numberOfSelectedModels={numberOfSelectedModels}
+					aircraftTitle = {aircraftTitle}
 					itemsCart={selectedModels}
 					indicesSelectedModels={indicesSelectedModels}
 					onActiveId={this.getActiveId}
