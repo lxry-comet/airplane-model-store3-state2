@@ -17,8 +17,8 @@ function PlanesList({
 }) {
 	return (
 		<>
-			{ items.length 
-			? 
+			{ !(aircraftTitle === 'Кошик' && numberOfSelectedModels === 0)  
+			&& (
 				<ul className={css.list}>
 					{items.map(item => (
 						<li
@@ -35,7 +35,6 @@ function PlanesList({
 								urlActualFull={item.model.actualFullImages}
 								nameBrief={item.name.brief}
 								nameFull={item.name.full}
-								modalColorPrice={item.model.colorsPrice}
 								nickname={item.name.nickname}
 								year={item.info.year}
 								country={item.info.country}
@@ -50,8 +49,7 @@ function PlanesList({
 						</li>
 					))}
 				</ul>
-			: <h2 className={css.invitation}>Додайте товар до кошику... 😉</h2>
-}
+			)}
 		</>
 	)
 }

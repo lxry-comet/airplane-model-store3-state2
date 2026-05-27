@@ -7,6 +7,7 @@ function Section({
   isOn = true, 
   bgColor, 
   title, 
+  allTypes,
   numberOfSelectedModels,
   children 
 }) {
@@ -25,6 +26,8 @@ function Section({
       ? 'Кошик пустий' 
       : title}
         </h2>} 
+        <h3 className={css.titleTotalTypes}>Кількість типів ЛА: {allTypes}</h3>
+        <h3 className={css.titleTotalTypes}>Загальна кількість моделей ЛА: {0}</h3>
       {children}
     </section>}
     </>

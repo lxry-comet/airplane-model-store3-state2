@@ -42,6 +42,7 @@ export default function Planes({
 	urlActualFull = [],
 	nameBrief,
 	nameFull,
+	modalColorPrice,
 	nickname = 'не відомо',
 	year,
 	country,
@@ -53,7 +54,11 @@ export default function Planes({
 	onActiveId
 }) {
 	const different = getManufacturingYears(start, end)
+//! Рахуємо кількість моделей <numberModels> виходячи з наявності фактичної ціни
+	// * NumberModels = сумі значень властивостей об'єкту colorPsice, значення яких є число > 0
+  const numberModels = Object.values(modalColorPrice).filter(item => item > 0).length;
 
+console.log('numberModels: ', numberModels);
 	function getBgColorCardTitle(type) {
 		switch (type) {
 			case 'plane':
@@ -73,6 +78,11 @@ export default function Planes({
 			<h3 className={css[getBgColorCardTitle(bgCardTitle)]}>
 				<GiAbstract021 className={css.icon} size={iconSize.lg} />
 				{nameBrief}
+				
+				{numberModels > 1 &&
+				<span className={css.basedTitleNumberOfModels}>
+					{numberModels}
+					</span>}
 			</h3>
 			<img src={urlMain} alt={nameBrief} className={css.mainImage} />
 			<p className={css.textField}>

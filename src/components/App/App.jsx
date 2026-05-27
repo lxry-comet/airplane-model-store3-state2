@@ -183,6 +183,10 @@ export class App extends Component {
 		//* Кількість обраних моделей
 		const numberOfSelectedModels = indicesSelectedModels.length;
 		
+		//! Кількість типів ЛА
+		const totalTypes = aircraftsArray.length;
+		//! Загальна кількість моделей 
+
 		const selectedModels = this.state.indicesSelectedModels.flatMap((id) => aircrafts.filter((element) => element.id === id));
 
 		//! [3] Блок консолей необхідних даних 
@@ -192,6 +196,8 @@ export class App extends Component {
 		console.log('Selected Models: ', selectedModels);
 
 		console.log('Кількість обраних моделей: ', numberOfSelectedModels);
+
+		console.log('0️⃣Кількість типів ЛА: ', totalTypes);
 		return (
 			<>
 				{/*//!  Filter */}
@@ -235,6 +241,7 @@ export class App extends Component {
 				<Section
 					bgColor={this.state.bgColor}
 					title={this.state.aircraftTitle}
+					allTypes={totalTypes} //! кількість типів ЛА
 					numberOfSelectedModels={numberOfSelectedModels}
 
 				>

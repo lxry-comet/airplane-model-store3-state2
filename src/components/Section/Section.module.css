@@ -10,7 +10,11 @@
     font-weight: 700;
     font-style: normal;
 }
-
+.titleTotalTypes{
+	composes:lugrasimoBold;
+	font-size: 36px;
+	text-align: center;
+}
 .titleLugrasimoBold{
 	composes:lugrasimoBold;
 	margin-bottom: 24px;
