@@ -8,6 +8,7 @@ function Section({
   bgColor, 
   title, 
   allTypes,
+  numberOfModels,
   numberOfSelectedModels,
   children 
 }) {
@@ -27,7 +28,7 @@ function Section({
       : title}
         </h2>} 
         <h3 className={css.titleTotalTypes}>Кількість типів ЛА: {allTypes}</h3>
-        <h3 className={css.titleTotalTypes}>Загальна кількість моделей ЛА: {0}</h3>
+        <h3 className={css.titleTotalTypes}>Загальна кількість моделей ЛА: {numberOfModels}</h3>
       {children}
     </section>}
     </>

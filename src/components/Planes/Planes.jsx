@@ -58,7 +58,7 @@ export default function Planes({
 	// * NumberModels = сумі значень властивостей об'єкту colorPsice, значення яких є число > 0
   const numberModels = Object.values(modalColorPrice).filter(item => item > 0).length;
 
-console.log('numberModels: ', numberModels);
+// console.log('numberModels: ', numberModels);
 	function getBgColorCardTitle(type) {
 		switch (type) {
 			case 'plane':

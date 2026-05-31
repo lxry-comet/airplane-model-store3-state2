@@ -185,7 +185,18 @@ export class App extends Component {
 		
 		//! Кількість типів ЛА
 		const totalTypes = aircraftsArray.length;
-		//! Загальна кількість моделей 
+		//! Загальна кількість моделей ЛА
+// 		const numberOfModelsArray =  aircraftsArray.map(item => Object.values(item.model.colorsPrice).filter(element => element > 0).length);
+
+// 		const numberOfModels = numberOfModelsArray.reduce((previousValue, number) => {
+//     return previousValue + number;
+// }, 0);
+		const numberOfModels =  aircraftsArray
+		.map(item => Object.values(item.model.colorsPrice)
+		.filter(element => element > 0).length)
+		.reduce((previousValue, number) => {
+    	return previousValue + number;
+		}, 0);
 
 		const selectedModels = this.state.indicesSelectedModels.flatMap((id) => aircrafts.filter((element) => element.id === id));
 
@@ -198,35 +209,12 @@ export class App extends Component {
 		console.log('Кількість обраних моделей: ', numberOfSelectedModels);
 
 		console.log('0️⃣Кількість типів ЛА: ', totalTypes);
+
+		// console.log('Масив загальних кількостей моделей ЛА: ', numberOfModelsArray );
+		console.log('Загальних кількостей моделей ЛА: ', numberOfModels );
+
 		return (
 			<>
-				{/*//!  Filter */}
-				{/* <div className={css.filterBox}>
-					<button
-						className={css.buttonAllFiltration}
-						type='button'
-						onClick={this.allFiltration}
-					>
-						ВСІ
-					</button>
-
-					<button
-						className={css.buttonPlaneFiltration}
-						type='button'
-						onClick={this.planeFiltration}
-					>
-						Літаки
-					</button>
-
-					<button
-						className={css.buttonHelicopterFiltration}
-						type='button'
-						onClick={this.helicopterFiltration}
-					>
-						Вертольоти
-					</button>
-				</div> */}
-
 				<Filter
 					onAll={this.allFiltration}
           onPlanes={this.planeFiltration}
@@ -242,6 +230,7 @@ export class App extends Component {
 					bgColor={this.state.bgColor}
 					title={this.state.aircraftTitle}
 					allTypes={totalTypes} //! кількість типів ЛА
+					numberOfModels={numberOfModels} //! загальна кількість моделей ЛА
 					numberOfSelectedModels={numberOfSelectedModels}
 
 				>
@@ -275,22 +264,6 @@ export class App extends Component {
 					onActiveId={this.getActiveId}
 					/>
 				</Section>
-
-				{/* <Section 
-					isOn={this.state.isPlain}
-					bgColor={this.state.bgColor}
-				 	title='Магазин моделей літаків'
-				>
-					<PlanesList items={planes} />
-				</Section>
-
-				<Section
-					isOn={this.state.isHelicopter}
-					bgColor={this.state.bgColor}
-					title='Магазин моделей вертольотів'
-				>
-					<PlanesList items={helicopters} />
-				</Section> */}
 			</>
 		)
 	}
