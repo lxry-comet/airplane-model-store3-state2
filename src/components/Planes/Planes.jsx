@@ -71,8 +71,6 @@ export default function Planes({
 				return 'itemTitle'
 		}
 	}
-	// console.log('Template Plains.jsx: ', template);
-
 	return (
 		<>
 			<h3 className={css[getBgColorCardTitle(bgCardTitle)]}>
