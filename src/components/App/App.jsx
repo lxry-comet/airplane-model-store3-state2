@@ -23,6 +23,20 @@ import Section from '@/components/Section/Section.jsx'
 import css from './App.module.css'
 import { id } from 'date-fns/locale'
 
+//! Приклад початкового сортування на ім'я (за полем name.brief)
+
+const aircrafts2 = aircrafts; //! Це не окрема копія, це копія за посиланям
+
+// const aircrafts2 = [...aircrafts]; //! Це окрема копія 
+aircrafts2.sort((a, b) => a.name.brief.localeCompare(b.name.brief));
+
+// aircrafts.sort((a, b) =>
+//     a.name.brief.localeCompare(b.name.brief)
+// );
+console.log('🎯aircrafts', aircrafts);
+console.log('🎯aircrafts2', aircrafts2);
+
+
 export class App extends Component {
 
 	// ! План створення кошику:
@@ -220,7 +234,7 @@ export class App extends Component {
 
 		// console.log('Масив загальних кількостей моделей ЛА: ', numberOfModelsArray );
 		console.log('Загальних кількостей моделей ЛА: ', numberOfModels );
-		
+
 		console.log('0️⃣Загальна кількість моделей в кошику: ', totalModels);
 
 		return (
