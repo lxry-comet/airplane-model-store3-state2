@@ -10,6 +10,7 @@ function Section({
   allTypes,
   numberOfModels,
   numberOfSelectedModels,
+  totalModels,
   children 
 }) {
   return (
@@ -27,8 +28,22 @@ function Section({
       ? 'Кошик пустий' 
       : title}
         </h2>} 
-        <h3 className={css.titleTotalTypes}>Кількість типів ЛА: {allTypes}</h3>
-        <h3 className={css.titleTotalTypes}>Загальна кількість моделей ЛА: {numberOfModels}</h3>
+        <h3 className={css.titleTotalTypes}>
+          Кількість типів ЛА: {
+          title === 'Кошик'
+          ? numberOfSelectedModels
+          : allTypes
+          }
+
+        </h3>
+        <h3 className={css.titleTotalTypes}>Загальна кількість моделей ЛА: {
+          title === 'Кошик'
+          ? totalModels
+          : numberOfModels
+        
+        }
+
+        </h3>
       {children}
     </section>}
     </>

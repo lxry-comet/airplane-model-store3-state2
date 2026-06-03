@@ -200,6 +200,13 @@ export class App extends Component {
 
 		const selectedModels = this.state.indicesSelectedModels.flatMap((id) => aircrafts.filter((element) => element.id === id));
 
+		const totalModels =  selectedModels
+		.map(item => Object.values(item.model.colorsPrice)
+		.filter(element => element > 0).length)
+		.reduce((previousValue, number) => {
+    	return previousValue + number;
+		}, 0);
+		
 		//! [3] Блок консолей необхідних даних 
 		console.log('AircraftsArray: ', aircraftsArray);
 		console.log('🆔 aircraftId State: ', aircraftId);
@@ -208,10 +215,13 @@ export class App extends Component {
 
 		console.log('Кількість обраних моделей: ', numberOfSelectedModels);
 
+
 		console.log('0️⃣Кількість типів ЛА: ', totalTypes);
 
 		// console.log('Масив загальних кількостей моделей ЛА: ', numberOfModelsArray );
 		console.log('Загальних кількостей моделей ЛА: ', numberOfModels );
+		
+		console.log('0️⃣Загальна кількість моделей в кошику: ', totalModels);
 
 		return (
 			<>
@@ -232,7 +242,7 @@ export class App extends Component {
 					allTypes={totalTypes} //! кількість типів ЛА
 					numberOfModels={numberOfModels} //! загальна кількість моделей ЛА
 					numberOfSelectedModels={numberOfSelectedModels}
-
+					totalModels={totalModels}
 				>
 					
 					<PlanesList 
