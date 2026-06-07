@@ -120,7 +120,7 @@
       "colorsPrice": {
         "main": 840
       },
-      "actualImages": [
+      "_actualImages": [
         "/airplane-model-store3-state2/images/planes-actual/ah-64-comp-1.jpg",
         "/airplane-model-store3-state2/images/planes-actual/ah-64-comp-2.jpg",
         "/airplane-model-store3-state2/images/planes-actual/ah-64-comp-3.jpg",
@@ -340,7 +340,7 @@
         "rus": 730,
         "ukr": 750
       },
-      "actualImages": [
+      "_actualImages": [
         "/airplane-model-store3-state2/images/planes-actual/su-25rus-comp-1.jpg",
         "/airplane-model-store3-state2/images/planes-actual/su-25ukr-comp-2.jpg",
         "/airplane-model-store3-state2/images/planes-actual/su-25ukr-comp-3.jpg",
@@ -534,7 +534,7 @@
         "yellowGreen": 0,
         "yellowGreenWhite": "_1060"
       },
-      "actualImages": [
+      "_actualImages": [
         "/airplane-model-store3-state2/images/planes-actual/o2u-comp-1.jpg",
         "/airplane-model-store3-state2/images/planes-actual/o2u-comp-2.jpg",
         "/airplane-model-store3-state2/images/planes-actual/o2u-comp-3.jpg",

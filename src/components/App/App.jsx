@@ -35,7 +35,30 @@ aircrafts2.sort((a, b) => a.name.brief.localeCompare(b.name.brief));
 // );
 console.log('🎯aircrafts', aircrafts);
 console.log('🎯aircrafts2', aircrafts2);
+//! Приклад початкового сортування за роком створення (за полем info.year)
+aircrafts2.sort((a, b) => a.info.year - b.info.year);
 
+//! Сортування, в якому моделі, яких немає в наявності знаходяться в кінці списку
+console.log("++++++++++++++++++++++++++++++++++++++++++++++++++++");
+
+//! 1) відокремити "білих"(є в наявночті) від "чорних" (немає в наявності), 
+//! 2) Білі скласти на початку, а чорні в кінець
+
+const white = aircrafts.filter(aircraft => aircraft.model.actualImages);
+const black = aircrafts.filter(aircraft => !aircraft.model.actualImages);
+
+console.log('white', white);
+console.log('black', black);
+
+const aircraftsNew = [...white, ...black];
+console.log('⚡aircraftsNew', aircraftsNew);
+// aircrafts.splice(0, aircrafts.length);
+//? або
+aircrafts.length = 0;
+aircrafts.push(...aircraftsNew);
+console.log('⚡aircrafts', aircrafts);
+
+console.log("++++++++++++++++++++++++++++++++++++++++++++++++++++");
 
 export class App extends Component {
 
