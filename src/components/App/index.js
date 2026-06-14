@@ -4,5 +4,5 @@ export * from './App.jsx';
 // export * from './AppSearchDebounce.jsx'
 // export * from './AppSearchDebounceTextBacklight.jsx'
 export * from './AppUncontrolledElementsForm.jsx'
-// export * from './AppControlledElementsForm.jsx'
+export * from './AppControlledElementsForm.jsx'
 // export * from './AppComplexForms.jsx'
