@@ -19,7 +19,7 @@ import {Filter} from '@/components/Filter/Filter.jsx'
 import PlanesList from '@/components/PlanesList/PlanesList.jsx'
 // import Section from '../Section/Section.jsx'
 import Section from '@/components/Section/Section.jsx'
-
+import {Sorter} from '@/components/Sorter/Sorter.jsx'
 import css from './App.module.css'
 import { id } from 'date-fns/locale'
 
@@ -36,7 +36,7 @@ aircrafts2.sort((a, b) => a.name.brief.localeCompare(b.name.brief));
 console.log('🎯aircrafts', aircrafts);
 console.log('🎯aircrafts2', aircrafts2);
 //! Приклад початкового сортування за роком створення (за полем info.year)
-aircrafts2.sort((a, b) => a.info.year - b.info.year);
+// aircrafts2.sort((a, b) => a.info.year - b.info.year);
 
 //! Сортування, в якому моделі, яких немає в наявності знаходяться в кінці списку
 console.log("++++++++++++++++++++++++++++++++++++++++++++++++++++");
@@ -81,6 +81,7 @@ export class App extends Component {
 		// indicesSelectedModels: [] //! масив індексів обраних моделей
 		indicesSelectedModels: JSON.parse(localStorage.getItem("indicesSelectedModels")) || [],
 
+		inputSearchValue: "" //! значення inputSearch
 	}
 
 	// * 2 При першому завантажені якщо нічого не має  у властивість стейту, то створюємо пустий масив який записуємо у LocalStorage
@@ -201,6 +202,12 @@ export class App extends Component {
 				})
 			}
 	}
+	handleChangeInputSearchValue = event => {
+		const value = event.target.value;
+		this.setState({
+    inputSearchValue: value,
+	})
+	}
 //* Для того щоб функція getActiveId, впливала (перерендирила його) на компонент planesList треба, щоб змінилися пропси які безпосередньо впливать на рендер цього компоненту 
 	
 	render() {
@@ -212,7 +219,8 @@ export class App extends Component {
 		activeButton, // 'allButton',
 		bgColor, // 'white',
 		aircraftId, // "id" обраного елемента
-		indicesSelectedModels // масив індексів обраних моделей
+		indicesSelectedModels, // масив індексів обраних моделей
+		inputSearchValue // значення inputSearch
 		} = this.state;
 
 
@@ -259,6 +267,7 @@ export class App extends Component {
 		console.log('Загальних кількостей моделей ЛА: ', numberOfModels );
 
 		console.log('0️⃣Загальна кількість моделей в кошику: ', totalModels);
+		console.log("Значення inputSearch: ", inputSearchValue)
 
 		return (
 			<>
@@ -272,6 +281,10 @@ export class App extends Component {
 					numberOfSelectedModels={numberOfSelectedModels}
 					
 				/>
+				<Sorter
+					inputSearch={inputSearchValue}
+					onHandleChangeInputSearchValue={this.handleChangeInputSearchValue}
+				/>	
 
 				<Section
 					bgColor={this.state.bgColor}
@@ -281,7 +294,6 @@ export class App extends Component {
 					numberOfSelectedModels={numberOfSelectedModels}
 					totalModels={totalModels}
 				>
-					
 					<PlanesList 
 					// items={this.state.aircraftsArray}
 

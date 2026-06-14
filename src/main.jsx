@@ -27,12 +27,12 @@ import {
 createRoot(document.getElementById('root')).render(
 	<StrictMode>
 		<BrowserRouter basename='/airplane-model-store3-state2'>
-{/* <App /> */}
+        <App />
         {/* <AppColorBox />  */}
         {/* <AppSearchDebounce /> */}
         {/* <AppSearchDebounceTextBacklight /> */}
         {/* <AppUncontrolledElementsForm onSubmit={values => console.log(values)}/> */}
-        <AppControlledElementsForm />
+        {/* <AppControlledElementsForm /> */}
         {/* <AppComplexForms onSubmit={values => console.log(values)} /> */}
 
 		</BrowserRouter>

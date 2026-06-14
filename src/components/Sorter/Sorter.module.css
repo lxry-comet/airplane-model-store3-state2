@@ -1,0 +1,16 @@
+.sorterBox{
+	    display: flex;
+			flex-direction: column;
+    justify-content: center;
+		    border: 8px solid #719e7091;
+    border-radius: 16px;
+    background-color: #c0dec9e9;
+}
+.sorterBox{
+	text-align: center;
+}
+.inputSearch {
+    display: block;
+    width: 200px;
+    margin: 20px auto;
+}
