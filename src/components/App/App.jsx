@@ -333,7 +333,8 @@ export class App extends Component {
 						aircraftTitle === 'Кошик'
 						
 						? selectedModels
-						: searchInputList 
+						// : aircraftsArray 
+						:searchInputList
 					}
 
 					numberOfSelectedModels={numberOfSelectedModels}
