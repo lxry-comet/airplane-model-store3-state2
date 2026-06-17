@@ -13,7 +13,8 @@ function PlanesList({
 	itemsCart,
 	onActiveId,
 	indicesSelectedModels,
-	numberOfSelectedModels
+	numberOfSelectedModels,
+	searchInputList
 }) {
 	return (
 		<>

@@ -204,6 +204,18 @@ export class App extends Component {
 	}
 	handleChangeInputSearchValue = event => {
 		const value = event.target.value;
+		//! Початкові данні: aircrafts та значення input value
+		
+		//! Потрібно: перебрати масив aircrafts та на кожній ітерації порівняти input value та властивістю name.brief кожного елементу масиву
+
+		//! Якщо знайдений збіг, то цей елемент додається в окремий масив, який після закінчення ітерації aircrafts буде рендеритись замість PlanesList
+
+		// const searchInputList = aircrafts.filter(
+		// 	item => item.name.brief.toLowerCase()
+		// 	.startsWith(value.toLowerCase().trim())
+		// );
+		
+		// console.log("⚡searchInputList: ", searchInputList)
 		this.setState({
     inputSearchValue: value,
 	})
@@ -228,6 +240,11 @@ export class App extends Component {
 		//* Кількість обраних моделей
 		const numberOfSelectedModels = indicesSelectedModels.length;
 		
+		const searchInputList = aircrafts.filter(
+			item => item.name.brief.toLowerCase()
+			.startsWith(inputSearchValue.toLowerCase().trim())
+		);
+
 		//! Кількість типів ЛА
 		const totalTypes = aircraftsArray.length;
 		//! Загальна кількість моделей ЛА
@@ -269,6 +286,8 @@ export class App extends Component {
 		console.log('0️⃣Загальна кількість моделей в кошику: ', totalModels);
 		console.log("Значення inputSearch: ", inputSearchValue)
 
+		console.log("⚡⚡⚡searchInputList: ", searchInputList)
+
 		return (
 			<>
 				<Filter
@@ -284,6 +303,7 @@ export class App extends Component {
 				<Sorter
 					inputSearch={inputSearchValue}
 					onHandleChangeInputSearchValue={this.handleChangeInputSearchValue}
+					
 				/>	
 
 				<Section
@@ -313,7 +333,7 @@ export class App extends Component {
 						aircraftTitle === 'Кошик'
 						
 						? selectedModels
-						: aircraftsArray
+						: searchInputList 
 					}
 
 					numberOfSelectedModels={numberOfSelectedModels}
