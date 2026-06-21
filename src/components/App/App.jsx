@@ -22,6 +22,7 @@ import Section from '@/components/Section/Section.jsx'
 import {Sorter} from '@/components/Sorter/Sorter.jsx'
 import css from './App.module.css'
 import { id } from 'date-fns/locale'
+import { CgOpenCollective } from 'react-icons/cg'
 
 //! Приклад початкового сортування на ім'я (за полем name.brief)
 
@@ -74,6 +75,7 @@ export class App extends Component {
 	state = {
 	
 		aircraftsArray: aircrafts,
+		
 		aircraftTitle: 'Магазин моделей літаків та вертольотів',
 		activeButton: 'allButton',
 		bgColor: 'white',
@@ -81,7 +83,10 @@ export class App extends Component {
 		// indicesSelectedModels: [] //! масив індексів обраних моделей
 		indicesSelectedModels: JSON.parse(localStorage.getItem("indicesSelectedModels")) || [],
 
-		inputSearchValue: "" //! значення inputSearch
+		inputSearchValue: "", //! значення inputSearch
+
+		aircraftsArrAfterFiltration: aircrafts,  //! дубльоване значення aircraftsArr після фільтрації
+
 	}
 
 	// * 2 При першому завантажені якщо нічого не має  у властивість стейту, то створюємо пустий масив який записуємо у LocalStorage
@@ -113,6 +118,7 @@ export class App extends Component {
     	inputSearchValue: "",
 
 			aircraftsArray: aircrafts,
+			aircraftsArrAfterFiltration: aircrafts,
 			aircraftTitle: 'Магазин моделей літаків та вертольотів',
 			activeButton:'allButton',
 			bgColor: 'lightgreen'
@@ -130,6 +136,8 @@ export class App extends Component {
     inputSearchValue: "",
 			
 			aircraftsArray: planesArray,
+			aircraftsArrAfterFiltration: planesArray,
+
 			aircraftTitle: 'Магазин моделей літаків',
 			activeButton:'planeButton',
 			bgColor: 'lightgreen'
@@ -146,6 +154,8 @@ export class App extends Component {
     inputSearchValue: "",
 
 			aircraftsArray: biplanesArray,
+			aircraftsArrAfterFiltration: biplanesArray,
+
 			aircraftTitle: 'Магазин моделей біпланів',
 			activeButton:'biplaneButton',
 			bgColor: 'lightgreen'
@@ -161,6 +171,8 @@ export class App extends Component {
     inputSearchValue: "",
 
 			aircraftsArray: helicopterArray,
+			aircraftsArrAfterFiltration: helicopterArray,
+
 			aircraftTitle: 'Магазин моделей вертольотів',
 			activeButton:'helicopterButton',
 			bgColor: 'lightgreen'
@@ -217,16 +229,16 @@ export class App extends Component {
 
 		//! Якщо знайдений збіг, то цей елемент додається в окремий масив, який після закінчення ітерації aircrafts буде рендеритись замість PlanesList
 
-		const searchInputList = aircrafts.filter(
+		// ! Після оновлення інпуту використати aircraftsArrAfterFiltration 
+		const searchInputList = this.state.aircraftsArrAfterFiltration.filter(
 			item => item.name.brief.toLowerCase()
 			.startsWith(value.toLowerCase().trim())
 		);
-		
 		// console.log("⚡searchInputList: ", searchInputList)
 		this.setState({
-		aircraftsArray: searchInputList,
-    inputSearchValue: value,
-	})
+			aircraftsArray: searchInputList,
+    	inputSearchValue: value,
+		})
 	}
 //* Для того щоб функція getActiveId, впливала (перерендирила його) на компонент planesList треба, щоб змінилися пропси які безпосередньо впливать на рендер цього компоненту 
 	
@@ -240,7 +252,8 @@ export class App extends Component {
 		bgColor, // 'white',
 		aircraftId, // "id" обраного елемента
 		indicesSelectedModels, // масив індексів обраних моделей
-		inputSearchValue // значення inputSearch
+		inputSearchValue, // значення inputSearch
+		aircraftsArrAfterFiltration
 		} = this.state;
 
 
@@ -297,6 +310,7 @@ export class App extends Component {
 
 		// console.log("⚡⚡⚡searchInputList: ", searchInputList)
 
+			console.log("🎯⚡✅aircraftsArrAfterFiltration: ", aircraftsArrAfterFiltration)
 		return (
 			<>
 				<Filter
