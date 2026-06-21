@@ -110,6 +110,7 @@ export class App extends Component {
 		console.log('all')
 		
 		this.setState({
+    	inputSearchValue: "",
 
 			aircraftsArray: aircrafts,
 			aircraftTitle: 'Магазин моделей літаків та вертольотів',
@@ -126,6 +127,7 @@ export class App extends Component {
 		console.log("planesArray", planesArray);
 
 		this.setState({
+    inputSearchValue: "",
 			
 			aircraftsArray: planesArray,
 			aircraftTitle: 'Магазин моделей літаків',
@@ -141,6 +143,8 @@ export class App extends Component {
 		console.log("biplanesArray", biplanesArray);
 
 		this.setState({
+    inputSearchValue: "",
+
 			aircraftsArray: biplanesArray,
 			aircraftTitle: 'Магазин моделей біпланів',
 			activeButton:'biplaneButton',
@@ -154,6 +158,7 @@ export class App extends Component {
 		console.log("helicopterArray", helicopterArray);
 
 		this.setState({
+    inputSearchValue: "",
 
 			aircraftsArray: helicopterArray,
 			aircraftTitle: 'Магазин моделей вертольотів',
@@ -172,6 +177,8 @@ export class App extends Component {
 
 		this.setState({
 			// aircraftsArray: selectedModels,
+    inputSearchValue: "",
+
 			aircraftTitle: 'Кошик',
 			activeButton:'cartButton',
 			bgColor: '#ff991c91'
@@ -210,13 +217,14 @@ export class App extends Component {
 
 		//! Якщо знайдений збіг, то цей елемент додається в окремий масив, який після закінчення ітерації aircrafts буде рендеритись замість PlanesList
 
-		// const searchInputList = aircrafts.filter(
-		// 	item => item.name.brief.toLowerCase()
-		// 	.startsWith(value.toLowerCase().trim())
-		// );
+		const searchInputList = aircrafts.filter(
+			item => item.name.brief.toLowerCase()
+			.startsWith(value.toLowerCase().trim())
+		);
 		
 		// console.log("⚡searchInputList: ", searchInputList)
 		this.setState({
+		aircraftsArray: searchInputList,
     inputSearchValue: value,
 	})
 	}
@@ -240,10 +248,11 @@ export class App extends Component {
 		//* Кількість обраних моделей
 		const numberOfSelectedModels = indicesSelectedModels.length;
 		
-		const searchInputList = aircrafts.filter(
-			item => item.name.brief.toLowerCase()
-			.startsWith(inputSearchValue.toLowerCase().trim())
-		);
+		//* логіка пошуку літаків згідно даних з інпуту
+		// const searchInputList = aircrafts.filter(
+		// 	item => item.name.brief.toLowerCase()
+		// 	.startsWith(inputSearchValue.toLowerCase().trim())
+		// );
 
 		//! Кількість типів ЛА
 		const totalTypes = aircraftsArray.length;
@@ -286,7 +295,7 @@ export class App extends Component {
 		console.log('0️⃣Загальна кількість моделей в кошику: ', totalModels);
 		console.log("Значення inputSearch: ", inputSearchValue)
 
-		console.log("⚡⚡⚡searchInputList: ", searchInputList)
+		// console.log("⚡⚡⚡searchInputList: ", searchInputList)
 
 		return (
 			<>
@@ -333,8 +342,8 @@ export class App extends Component {
 						aircraftTitle === 'Кошик'
 						
 						? selectedModels
-						// : aircraftsArray 
-						:searchInputList
+						: aircraftsArray 
+						// :searchInputList
 					}
 
 					numberOfSelectedModels={numberOfSelectedModels}
