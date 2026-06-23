@@ -186,14 +186,15 @@ export class App extends Component {
 
 		console.log('Кошик')
 		// console.log('Selected Models: ', selectedModels);
-
+		//* Коли натиснута кнопка кошик, початковий масив для пошуку з інпутом є selectedModels 
 		this.setState({
 			// aircraftsArray: selectedModels,
-    inputSearchValue: "",
-
+    	inputSearchValue: "",
 			aircraftTitle: 'Кошик',
 			activeButton:'cartButton',
-			bgColor: '#ff991c91'
+			bgColor: '#ff991c91',
+			aircraftsArrAfterFiltration: this.state.indicesSelectedModels.flatMap((id) => aircrafts.filter((element) => element.id === id))
+,
 		})
 	}
 	getActiveId = id =>{
@@ -230,15 +231,21 @@ export class App extends Component {
 		//! Якщо знайдений збіг, то цей елемент додається в окремий масив, який після закінчення ітерації aircrafts буде рендеритись замість PlanesList
 
 		// ! Після оновлення інпуту використати aircraftsArrAfterFiltration 
+
+		//* Перерендер плейнлісту має відбутись тоді коли змінюється стан selectedModels. Для цього треба змінити indicesSelectedModels
+
 		const searchInputList = this.state.aircraftsArrAfterFiltration.filter(
 			item => item.name.brief.toLowerCase()
 			.startsWith(value.toLowerCase().trim())
 		);
-		// console.log("⚡searchInputList: ", searchInputList)
+		console.log("⚡searchInputList: ", searchInputList)
 		this.setState({
 			aircraftsArray: searchInputList,
     	inputSearchValue: value,
+			// indicesSelectedModels:
+			
 		})
+		
 	}
 //* Для того щоб функція getActiveId, впливала (перерендирила його) на компонент planesList треба, щоб змінилися пропси які безпосередньо впливать на рендер цього компоненту 
 	
@@ -282,7 +289,7 @@ export class App extends Component {
     	return previousValue + number;
 		}, 0);
 
-		const selectedModels = this.state.indicesSelectedModels.flatMap((id) => aircrafts.filter((element) => element.id === id));
+		const selectedModels = indicesSelectedModels.flatMap((id) => aircrafts.filter((element) => element.id === id));
 
 		const totalModels =  selectedModels
 		.map(item => Object.values(item.model.colorsPrice)
@@ -311,6 +318,7 @@ export class App extends Component {
 		// console.log("⚡⚡⚡searchInputList: ", searchInputList)
 
 			console.log("🎯⚡✅aircraftsArrAfterFiltration: ", aircraftsArrAfterFiltration)
+
 		return (
 			<>
 				<Filter
@@ -321,12 +329,10 @@ export class App extends Component {
 					buttonActive={this.state.activeButton}
 					onCart={this.cartFiltration}
 					numberOfSelectedModels={numberOfSelectedModels}
-					
 				/>
 				<Sorter
 					inputSearch={inputSearchValue}
 					onHandleChangeInputSearchValue={this.handleChangeInputSearchValue}
-					
 				/>	
 
 				<Section
