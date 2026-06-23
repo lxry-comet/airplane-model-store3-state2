@@ -16,6 +16,8 @@ function PlanesList({
 	numberOfSelectedModels,
 	searchInputList
 }) {
+			
+	// ! Якщо ми не в кошику то <h2 className={css.invitation}>Нічого не знайдено... ☹️</h2> Якщо в кошику і не має товару то <h2 className={css.invitation}>Додайте товар до кошику... 😉</h2>
 	return (
 		<>
 			{ items.length 
@@ -51,7 +53,10 @@ function PlanesList({
 						</li>
 					))}
 				</ul>
-			: <h2 className={css.invitation}>Додайте товар до кошику... 😉</h2>
+			: 
+				aircraftTitle === "Кошик" 
+				? <h2 className={css.invitation}>Додайте товар до кошику... 😉</h2>
+				: <h2 className={css.invitation}>Нічого не знайдено... ☹️</h2> 
 }
 		</>
 	)
