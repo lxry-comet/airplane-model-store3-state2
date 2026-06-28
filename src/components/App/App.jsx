@@ -179,7 +179,7 @@ export class App extends Component {
 		})
 	}
 	cartFiltration = () => {
-		// const selectedModels = this.state.indicesSelectedModels.flatMap((id) => aircrafts.filter((element) => element.id === id));
+		const selectedModels = this.state.indicesSelectedModels.flatMap((id) => aircrafts.filter((element) => element.id === id));
 
 		//? Коли натиснута кнопка кошик, aircraftsArray треба замінити з aircrafts на selectedModels
 		//? А коли вона не активна то в aircraftsArray кладемо значення яке вираховується кожною кнопкою фільтрів (окрім)
@@ -188,7 +188,7 @@ export class App extends Component {
 		// console.log('Selected Models: ', selectedModels);
 		//* Коли натиснута кнопка кошик, початковий масив для пошуку з інпутом є selectedModels 
 		this.setState({
-			// aircraftsArray: selectedModels,
+			aircraftsArray: selectedModels,
     	inputSearchValue: "",
 			aircraftTitle: 'Кошик',
 			activeButton:'cartButton',
