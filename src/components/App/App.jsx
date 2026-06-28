@@ -361,7 +361,7 @@ export class App extends Component {
 					items={
 						aircraftTitle === 'Кошик'
 						
-						? selectedModels
+						? aircraftsArray //! Чи можна так робити?
 						: aircraftsArray 
 						// :searchInputList
 					}
