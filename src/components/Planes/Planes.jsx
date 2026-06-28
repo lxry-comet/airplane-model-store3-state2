@@ -45,7 +45,7 @@ export default function Planes({
 	modalColorPrice,
 	nickname = 'не відомо',
 	year,
-	country,
+	countries,
 	type,
 	price,
 	description,
@@ -57,7 +57,8 @@ export default function Planes({
 //! Рахуємо кількість моделей <numberModels> виходячи з наявності фактичної ціни
 	// * NumberModels = сумі значень властивостей об'єкту colorPsice, значення яких є число > 0
   const numberModels = Object.values(modalColorPrice).filter(item => item > 0).length;
-
+	console.log("🫧countries: ", countries)
+	console.log("🫧Інверсія 1: ", !1)
 // console.log('numberModels: ', numberModels);
 	function getBgColorCardTitle(type) {
 		switch (type) {
@@ -102,7 +103,18 @@ export default function Planes({
 			</p>
 			<p className={css.textField}>
 				<AiOutlineFlag className={css.icon} size={iconSize.sm} />
-				Країна виробник: <span className={css.textFieldValue}>{country}</span>
+				Країна виробник: <span className={css.textFieldValue}>{
+				// countries
+				//! Створити функцію на перевірку чи останній елемент якщо так то прибрати кому в кінці
+				countries.map((country, index, array) => 
+					<span key={index}>
+						{country}
+						{index === array.length -1
+						? ""
+						: ", "}
+						</span>
+				)
+				}</span>
 			</p>
 			<p className={css.textField}>
 				<AiOutlineClockCircle className={css.icon} size={iconSize.sm} />
@@ -194,7 +206,7 @@ Planes.propTypes = {
 	nameFull: PropTypes.string.isRequired,
 	nickname: PropTypes.string,
 	year: PropTypes.number.isRequired,
-	country: PropTypes.string.isRequired,
+	countries: PropTypes.string.isRequired,
 	type: PropTypes.string.isRequired,
 	price: PropTypes.string.isRequired,
 	description: PropTypes.string.isRequired,
