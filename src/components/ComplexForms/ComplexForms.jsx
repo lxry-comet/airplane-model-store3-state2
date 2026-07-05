@@ -19,10 +19,9 @@ state = { ...INITIAL_STATE };
 		const {inputLogin, inputPassword} = this.state;
 		console.log(`Login: ${inputLogin}, Password: ${inputPassword}`);
 		// this.props.onSubmit({ inputLogin, inputPassword });
-		this.props.onSubmit({ ...this.state });
+		this.props.onSubmit({ ...this.state }); //! Тут відбувається виклик функції з AppComplexForm submit({ ...this.state })
 		// form.reset();
 		this.reset();  //! очищуємо поля всіх інпутів
-
 	};
 
 	handleChange = event => {
@@ -49,8 +48,8 @@ state = { ...INITIAL_STATE };
 		} = this.state;
 
 		console.log('----------------------------------------------')
-			console.log("Значення inputLogin:", inputLogin);
-			console.log("Значення inputPassword:", inputPassword);
+			console.log("🛅 Значення inputLogin:", inputLogin);
+			console.log("🛅 Значення inputPassword:", inputPassword);
 		console.log('______________________________________________')
 
 		return (

@@ -5,24 +5,40 @@ import {ComplexForms} from '@/components/ComplexForms/ComplexForms.jsx'
 
 export class AppComplexForms extends Component {
 
-state = { };
+	//! Записати в свій state значення стейту дочернього компоненту ComplexForm
+state = { 
+	formInputLogin: "",
+  formInputPassword: "",
 
+ };
+submitForm = ({
+	inputLogin,
+	inputPassword
+}) => {
+	// console.log("✅ SubmitForm: ", data)
+	// const {inputLogin, inputPassword} = data;
+	this.setState({
+		formInputLogin: inputLogin,
+		formInputPassword: inputPassword
+	});
+}
 	render() {
-		// const {
-
-		// } = this.state;
+		const {
+		formInputLogin,
+		formInputPassword
+		} = this.state;
 
 		console.log('----------------------------------------------')
-			// console.log("Значення inputLogin:", inputLogin);
-   	 	// console.log("Значення inputPassword:", inputPassword);
+			console.log("✅ Значення inputLogin:", formInputLogin);
+   	 	console.log("✅ Значення inputPassword:", formInputPassword);
 		console.log('______________________________________________')
 
 		return (
 		<>
 			{/*//! 4.4.3.Складні форми */}
         <ComplexForms
-          onSubmit={values => console.log(values)}
-          // onSubmit={this.submitForm}
+          // onSubmit={values => console.log(values)}
+          onSubmit={this.submitForm}
         />
 
 		</>
