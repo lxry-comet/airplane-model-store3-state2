@@ -36,7 +36,6 @@ render() {
 					value={inputValue}
 					// onChange={() => console.log('Подія onChange')}
 					onChange={this.handleChange}
-					
         />
         <h3 className={css.title}>Значення inputValue: {inputValue}</h3>
       </>
