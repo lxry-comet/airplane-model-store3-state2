@@ -7,7 +7,8 @@ const INITIAL_STATE = {
 	inputLogin: '',
 	inputPassword: '',
 	experience: 'junior',
-	age: '' 
+	age: '',
+	licence: false
 }
 
 export class ComplexFormsGenerationIDRadioButtonCheckboxesSelect extends Component {
@@ -46,6 +47,15 @@ export class ComplexFormsGenerationIDRadioButtonCheckboxesSelect extends Compone
 			[name]: value
 		})
 	}
+	handleChangeCheckbox = event => {
+		// console.log("event.currentTarget.checked:", event.currentTarget.checked);
+
+		const {checked} = event.currentTarget
+		console.log('checked: ', checked)
+		this.setState({
+			licence: checked
+		})
+	}
 	// handleRadioButtonOnChange = event => {
 	// 	// console.log("event.currentTarget:", event.currentTarget);
 	//   // console.log("event.currentTarget.name:", event.currentTarget.name);
@@ -62,13 +72,14 @@ export class ComplexFormsGenerationIDRadioButtonCheckboxesSelect extends Compone
 	// 	})
 	// }
 	render() {
-		const { inputLogin, inputPassword, experience, age } = this.state
+		const { inputLogin, inputPassword, experience, age,licence } = this.state
 
 		console.log('----------------------------------------------')
 		console.log('🛅 Значення inputLogin:', inputLogin)
 		console.log('🛅 Значення inputPassword:', inputPassword)
 		console.log('🛅 Значення experience: ', experience)
 		console.log('🛅 Значення age: ', age)
+		console.log('🛅 Значення licence: ', licence)
 
 		console.log('______________________________________________')
 
@@ -155,8 +166,24 @@ export class ComplexFormsGenerationIDRadioButtonCheckboxesSelect extends Compone
 						<option value='36+'>36+</option>
 					</select>
 				</label>
+{/*//! + 4.4.6.Чекбокс */}
+                <label>
+                    Згоден з умовами
+                    <input
+                        type="checkbox"
+                        name="licence"
+                        checked={licence}
+                        onChange={this.handleChangeCheckbox}
+                    />
+                </label>
 
-				<button className={css.loginButton} type='submit'>
+				<button 
+				className={css.loginButton} 
+				type='submit'
+				disabled={
+					!licence
+				} //! блокування кнопки чекбоксом
+				>
 					Login
 				</button>
 			</form>
