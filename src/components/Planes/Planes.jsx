@@ -57,8 +57,8 @@ export default function Planes({
 //! Рахуємо кількість моделей <numberModels> виходячи з наявності фактичної ціни
 	// * NumberModels = сумі значень властивостей об'єкту colorPsice, значення яких є число > 0
   const numberModels = Object.values(modalColorPrice).filter(item => item > 0).length;
-	console.log("🫧countries: ", countries)
-	console.log("🫧Інверсія 1: ", !1)
+		// console.log("🫧countries: ", countries)
+		// console.log("🫧Інверсія 1: ", !1)
 // console.log('numberModels: ', numberModels);
 	function getBgColorCardTitle(type) {
 		switch (type) {
