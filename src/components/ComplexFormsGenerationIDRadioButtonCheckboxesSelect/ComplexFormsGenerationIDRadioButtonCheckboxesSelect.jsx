@@ -180,9 +180,7 @@ export class ComplexFormsGenerationIDRadioButtonCheckboxesSelect extends Compone
 				<button 
 				className={css.loginButton} 
 				type='submit'
-				disabled={
-					!licence
-				} //! блокування кнопки чекбоксом
+				disabled={!licence} //! блокування кнопки чекбоксом
 				>
 					Login
 				</button>
