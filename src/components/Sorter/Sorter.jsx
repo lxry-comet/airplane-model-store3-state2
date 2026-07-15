@@ -1,18 +1,46 @@
-import React, { Component } from "react";
+import React, { Component } from 'react'
 import css from './Sorter.module.css'
 
-export class Sorter extends Component{
-		state = {
-		sort: 'brief'
+export class Sorter extends Component {
+	state = {
+		sort: 'brief',
+		inputSearchPlaceholder: 'Введіть назву ЛА'
 	}
-	handleChange = (e) => {
+	handleChange = event => {
+		const radioButtonValue = event.target.value
+		let inputPlaceholder = ''
+
+		switch (radioButtonValue) {
+			case 'brief':
+				inputPlaceholder = 'Введіть назву ЛА'
+				break
+			case 'nickname':
+				inputPlaceholder = 'Введіть прізвисько ЛА'
+				break
+			case 'country':
+				inputPlaceholder = 'Введіть країну виробник ЛА'
+				break
+			case 'year':
+				inputPlaceholder = 'Введіть рік випуску ЛА'
+				break
+			default:
+				inputPlaceholder = ''
+				break
+		}
 		this.setState({
-			sort: e.target.value
+			sort: radioButtonValue,
+			inputSearchPlaceholder: inputPlaceholder
 		})
 	}
 	render() {
-		const {inputSearch, onHandleChangeInputSearchValue} = this.props;
-		const { sort } = this.state;
+		const { inputSearch, onHandleChangeInputSearchValue } = this.props
+		const { sort, inputSearchPlaceholder } = this.state
+
+		console.log('----------------------------------------------')
+		console.log('✅Sort: ', sort)
+		console.log('🎯inputSearchPlaceholder: ', inputSearchPlaceholder)
+		console.log('______________________________________________')
+
 		return (
 			<div className={css.sorterBox}>
 				<h3 className={css.formTitle}>
@@ -63,7 +91,7 @@ export class Sorter extends Component{
 				<input
 					className={css.inputSearch}
 					type='text'
-					placeholder='Введіть назву ЛА'
+					placeholder={inputSearchPlaceholder}
 					value={inputSearch}
 					onChange={onHandleChangeInputSearchValue}
 				/>
