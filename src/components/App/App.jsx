@@ -84,7 +84,7 @@ export class App extends Component {
 		indicesSelectedModels: JSON.parse(localStorage.getItem("indicesSelectedModels")) || [],
 
 		inputSearchValue: "", //! значення inputSearch
-
+		radioButtonValue: 'brief', //! значення радіо-кнопки 
 		aircraftsArrAfterFiltration: aircrafts,  //! дубльоване значення aircraftsArr після фільтрації
 
 	}
@@ -243,9 +243,14 @@ export class App extends Component {
 			aircraftsArray: searchInputList,
     	inputSearchValue: value,
 			// indicesSelectedModels:
-			
 		})
 		
+	} 
+	getRadioButtonValue = value => {
+		
+		this.setState({
+			radioButtonValue: value
+		})
 	}
 //* Для того щоб функція getActiveId, впливала (перерендирила його) на компонент planesList треба, щоб змінилися пропси які безпосередньо впливать на рендер цього компоненту 
 	
@@ -333,6 +338,7 @@ export class App extends Component {
 				<Sorter
 					inputSearch={inputSearchValue}
 					onHandleChangeInputSearchValue={this.handleChangeInputSearchValue}
+					onGetRadioButtonValue={this.getRadioButtonValue}
 				/>	
 
 				<Section

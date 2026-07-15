@@ -29,7 +29,7 @@ export class ComplexFormsGenerationIDRadioButtonCheckboxesSelect extends Compone
 		const { inputLogin, inputPassword } = this.state
 		console.log(`Login: ${inputLogin}, Password: ${inputPassword}`)
 		// this.props.onSubmit({ inputLogin, inputPassword });
-		this.props.onSubmit({ ...this.state }) //! Тут відбувається виклик функції з AppComplexForm submit({ ...this.state })
+		this.props.onSubmit({ ...this.state }) //! Тут відбувається виклик функції з AppComplexForm submitForm({ ...this.state })
 		// form.reset();
 		this.reset() //! очищуємо поля всіх інпутів
 	}

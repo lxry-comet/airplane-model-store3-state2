@@ -8,6 +8,7 @@ export class Sorter extends Component {
 	}
 	handleChange = event => {
 		const radioButtonValue = event.target.value
+		// console.log("🔤typeOf:",typeof radioButtonValue)
 		let inputPlaceholder = ''
 
 		switch (radioButtonValue) {
@@ -31,7 +32,9 @@ export class Sorter extends Component {
 			sort: radioButtonValue,
 			inputSearchPlaceholder: inputPlaceholder
 		})
+		this.props.onGetRadioButtonValue(radioButtonValue)
 	}
+	
 	render() {
 		const { inputSearch, onHandleChangeInputSearchValue } = this.props
 		const { sort, inputSearchPlaceholder } = this.state
