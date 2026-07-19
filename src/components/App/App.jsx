@@ -235,27 +235,60 @@ export class App extends Component {
 
 		//* Перерендер плейнлісту має відбутись тоді коли змінюється стан selectedModels. Для цього треба змінити indicesSelectedModels
 
+		//? Фігуранти (вхідні данні) нашої задачі:
+		//* aircraftsArrAfterFiltration
+		//* item.name.brief, item.name.nickname, item.info.countries, item.info.year - залежить від значення стейту radioButtonValue
+
+		//! radioButtonValue = 'brief' то беремо "item.name.brief"
+		//! radioButtonValue = 'nickname' то беремо "item.name.nickname"
+		//! radioButtonValue = 'countries' то беремо "item.info.countries"
+		//! radioButtonValue = 'year' то беремо "item.info.year"
+
+		//* Значення інпуту: value 
+
+
 		//! пошук за ім'ям
-		// const searchInputList = this.state.aircraftsArrAfterFiltration.filter(
-		// 	item => item.name.brief.toLowerCase()
-		// 	.startsWith(value.toLowerCase().trim())
-		// );
+		const findBrief = this.state.aircraftsArrAfterFiltration.filter(
+			item => item.name.brief.toLowerCase()
+			.startsWith(value.toLowerCase().trim())
+		);
 		//! пошук за призвищем 
-		// 	const searchInputList = this.state.aircraftsArrAfterFiltration.filter(
-		// 	item => item.name.nickname.toLowerCase()
-		// 	.includes(value.toLowerCase().trim())
-		// );
+			const findNickName = this.state.aircraftsArrAfterFiltration.filter(
+			item => item.name.nickname.toLowerCase()
+			.includes(value.toLowerCase().trim())
+		);
 		//! країна виробник
-		// 	const searchInputList = this.state.aircraftsArrAfterFiltration.filter(
-		// 	item => item.info.countries.some(country => country.toLowerCase().startsWith(value.toLowerCase().trim()))
-		// );
+			const findCountry = this.state.aircraftsArrAfterFiltration.filter(
+			item => item.info.countries.some(country => country.toLowerCase().startsWith(value.toLowerCase().trim()))
+		);
 		//! рік випуску
-			const searchInputList = this.state.aircraftsArrAfterFiltration.filter(
+			const findYear = this.state.aircraftsArrAfterFiltration.filter(
 			item => String(item.info.year).startsWith(value.trim())
 		);
-		console.log("⚡searchInputList: ", searchInputList)
+		// console.log("⚡searchInputList: ", searchInputList)
+		
+		let result = []
+
+		switch (this.state.radioButtonValue) {
+			case 'brief':
+				result = findBrief
+				break
+			case 'nickname':
+				result = findNickName
+				break
+			case 'country':
+				result = findCountry
+				break
+			case 'year':
+				result = findYear
+				break
+			default:
+				result = ''
+				break
+		}
+		console.log("☺️result: ", result)
 		this.setState({
-			aircraftsArray: searchInputList,
+			aircraftsArray: result,
     	inputSearchValue: value,
 			// indicesSelectedModels:
 		})
