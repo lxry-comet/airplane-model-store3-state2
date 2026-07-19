@@ -224,6 +224,7 @@ export class App extends Component {
 	}
 	handleChangeInputSearchValue = event => {
 		const value = event.target.value;
+		console.log('0️⃣ value: ', value)
 		//! Початкові данні: aircrafts та значення input value
 		
 		//! Потрібно: перебрати масив aircrafts та на кожній ітерації порівняти input value та властивістю name.brief кожного елементу масиву
@@ -234,9 +235,23 @@ export class App extends Component {
 
 		//* Перерендер плейнлісту має відбутись тоді коли змінюється стан selectedModels. Для цього треба змінити indicesSelectedModels
 
-		const searchInputList = this.state.aircraftsArrAfterFiltration.filter(
-			item => item.name.brief.toLowerCase()
-			.startsWith(value.toLowerCase().trim())
+		//! пошук за ім'ям
+		// const searchInputList = this.state.aircraftsArrAfterFiltration.filter(
+		// 	item => item.name.brief.toLowerCase()
+		// 	.startsWith(value.toLowerCase().trim())
+		// );
+		//! пошук за призвищем 
+		// 	const searchInputList = this.state.aircraftsArrAfterFiltration.filter(
+		// 	item => item.name.nickname.toLowerCase()
+		// 	.includes(value.toLowerCase().trim())
+		// );
+		//! країна виробник
+		// 	const searchInputList = this.state.aircraftsArrAfterFiltration.filter(
+		// 	item => item.info.countries.some(country => country.toLowerCase().startsWith(value.toLowerCase().trim()))
+		// );
+		//! рік випуску
+			const searchInputList = this.state.aircraftsArrAfterFiltration.filter(
+			item => String(item.info.year).startsWith(value.trim())
 		);
 		console.log("⚡searchInputList: ", searchInputList)
 		this.setState({
