@@ -297,7 +297,9 @@ export class App extends Component {
 	getRadioButtonValue = value => {
 		
 		this.setState({
-			radioButtonValue: value
+			radioButtonValue: value,
+			inputSearchValue: '',
+			aircraftsArray: this.state.aircraftsArrAfterFiltration
 		})
 	}
 //* Для того щоб функція getActiveId, впливала (перерендирила його) на компонент planesList треба, щоб змінилися пропси які безпосередньо впливать на рендер цього компоненту 
