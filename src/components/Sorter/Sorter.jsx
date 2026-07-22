@@ -36,12 +36,13 @@ export class Sorter extends Component {
 	}
 	
 	render() {
-		const { inputSearch, onHandleChangeInputSearchValue } = this.props
+		const { inputSearch, onHandleChangeInputSearchValue, radioButtonValueApp} = this.props
 		const { sort, inputSearchPlaceholder } = this.state
 
 		console.log('----------------------------------------------')
 		console.log('✅Sort: ', sort)
 		console.log('🎯inputSearchPlaceholder: ', inputSearchPlaceholder)
+		console.log("✅radioButtonValue:", radioButtonValueApp)
 		console.log('______________________________________________')
 
 		return (
@@ -53,9 +54,9 @@ export class Sorter extends Component {
 					<label>
 						<input
 							type='radio'
-							name='sort'
+							name='radioButtonValue'
 							value='brief'
-							checked={sort === 'brief'}
+							checked={radioButtonValueApp === 'brief'}
 							onChange={this.handleChange}
 						/>
 						Назва
@@ -63,9 +64,9 @@ export class Sorter extends Component {
 					<label>
 						<input
 							type='radio'
-							name='sort'
+							name='radioButtonValue'
 							value='nickname'
-							checked={sort === 'nickname'}
+							checked={radioButtonValueApp === 'nickname'}
 							onChange={this.handleChange}
 						/>
 						Прізвисько
@@ -73,9 +74,9 @@ export class Sorter extends Component {
 					<label>
 						<input
 							type='radio'
-							name='sort'
+							name='radioButtonValue'
 							value='country'
-							checked={sort === 'country'}
+							checked={radioButtonValueApp === 'country'}
 							onChange={this.handleChange}
 						/>
 						Країна виробник
@@ -83,9 +84,9 @@ export class Sorter extends Component {
 					<label>
 						<input
 							type='radio'
-							name='sort'
+							name='radioButtonValue'
 							value='year'
-							checked={sort === 'year'}
+							checked={radioButtonValueApp === 'year'}
 							onChange={this.handleChange}
 						/>
 						Рік випуску

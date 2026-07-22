@@ -121,7 +121,8 @@ export class App extends Component {
 			aircraftsArrAfterFiltration: aircrafts,
 			aircraftTitle: 'Магазин моделей літаків та вертольотів',
 			activeButton:'allButton',
-			bgColor: 'lightgreen'
+			bgColor: 'lightgreen',
+			radioButtonValue: 'brief'
 		})
 		console.log("aircrafts", aircrafts);
 	}
@@ -140,7 +141,8 @@ export class App extends Component {
 
 			aircraftTitle: 'Магазин моделей літаків',
 			activeButton:'planeButton',
-			bgColor: 'lightgreen'
+			bgColor: 'lightgreen',
+			radioButtonValue: 'brief'
 		})
 	}
 	biplaneFiltration = () => {
@@ -158,7 +160,8 @@ export class App extends Component {
 
 			aircraftTitle: 'Магазин моделей біпланів',
 			activeButton:'biplaneButton',
-			bgColor: 'lightgreen'
+			bgColor: 'lightgreen',
+			radioButtonValue: 'brief'
 		})
 	}
 	helicopterFiltration = () => {
@@ -175,7 +178,9 @@ export class App extends Component {
 
 			aircraftTitle: 'Магазин моделей вертольотів',
 			activeButton:'helicopterButton',
-			bgColor: 'lightgreen'
+			bgColor: 'lightgreen',
+			radioButtonValue: 'brief'
+			
 		})
 	}
 	cartFiltration = () => {
@@ -193,7 +198,8 @@ export class App extends Component {
 			aircraftTitle: 'Кошик',
 			activeButton:'cartButton',
 			bgColor: '#ff991c91',
-			aircraftsArrAfterFiltration: this.state.indicesSelectedModels.flatMap((id) => aircrafts.filter((element) => element.id === id))
+			aircraftsArrAfterFiltration: this.state.indicesSelectedModels.flatMap((id) => aircrafts.filter((element) => element.id === id)),
+			radioButtonValue: 'brief'
 ,
 		})
 	}
@@ -315,7 +321,8 @@ export class App extends Component {
 		aircraftId, // "id" обраного елемента
 		indicesSelectedModels, // масив індексів обраних моделей
 		inputSearchValue, // значення inputSearch
-		aircraftsArrAfterFiltration
+		aircraftsArrAfterFiltration,
+		radioButtonValue
 		} = this.state;
 
 
@@ -374,6 +381,7 @@ export class App extends Component {
 
 			console.log("🎯⚡✅aircraftsArrAfterFiltration: ", aircraftsArrAfterFiltration)
 
+			console.log("radioButtonValue (✅Sort): ", radioButtonValue)
 		return (
 			<>
 				<Filter
@@ -389,6 +397,7 @@ export class App extends Component {
 					inputSearch={inputSearchValue}
 					onHandleChangeInputSearchValue={this.handleChangeInputSearchValue}
 					onGetRadioButtonValue={this.getRadioButtonValue}
+					radioButtonValueApp={radioButtonValue}
 				/>	
 
 				<Section
