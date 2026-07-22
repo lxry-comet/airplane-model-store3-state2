@@ -201,7 +201,7 @@ export class App extends Component {
 		this.setState({
 			aircraftId: id
 		})
-					if ( this.state.indicesSelectedModels.includes(id)){
+			if ( this.state.indicesSelectedModels.includes(id)){
 				//! 1 Масив this.state.indicesSelectedModels
 				//! 2 Індекс - id
 				//! 3 З масиву this.state.indicesSelectedModels потрібно видалити елемент з 	індексом який дорівнює id
@@ -400,13 +400,10 @@ export class App extends Component {
 					<PlanesList 
 					// items={this.state.aircraftsArray}
 
-
-
 					// items={aircraftTitle === 'Кошик'
 					// 	? selectedModels
 					// 	: aircraftsArray
 					// }
-
 						
 					// itemsCart={this.state.indicesSelectedModels.flatMap((id) => aircrafts.filter((element) => element.id === id))}  
 					
@@ -415,7 +412,7 @@ export class App extends Component {
 					items={
 						aircraftTitle === 'Кошик'
 						
-						? aircraftsArray //! Чи можна так робити?
+						? selectedModels //! Чи можна так робити?
 						: aircraftsArray 
 						// :searchInputList
 					}
