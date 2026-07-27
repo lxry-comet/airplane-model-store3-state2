@@ -9,7 +9,7 @@ import {
   App,
 	// AppCounter,
   // AppColorBox,
-  // AppSearchDebounce, //! Пошук елементів + Debounce
+   AppSearchDebounce, //! Пошук елементів + Debounce
   // AppSearchDebounceTextBacklight, //! Пошук елементів + Debounce + Підсвічування тексту
   AppUncontrolledElementsForm, //! 4.4.1.Неконтрольовані елементи форм
   AppControlledElementsForm, //! 4.4.2.Контрольовані елементи форм
@@ -21,9 +21,9 @@ import {
 createRoot(document.getElementById('root')).render(
 	<StrictMode>
 		<BrowserRouter basename='/airplane-model-store3-state2'>
-        <App />
+        {/* <App /> */}
         {/* <AppColorBox />  */}
-        {/* <AppSearchDebounce /> */}
+        <AppSearchDebounce />
         {/* <AppSearchDebounceTextBacklight /> */}
         {/* <AppUncontrolledElementsForm onSubmit={values => console.log(values)}/> */}
         {/* <AppControlledElementsForm /> */}
