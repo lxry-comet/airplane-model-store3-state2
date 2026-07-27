@@ -4,7 +4,8 @@ import data from '@/json/cards_10-10.json'
 
 export class AppSearchDebounce extends Component {
 	state = {
-		inputValue: ''
+		inputValue: '',
+		filteredArray: data
 	}
 	handleChange = event => {
 		//! Деструктуризуємо:
@@ -13,21 +14,28 @@ export class AppSearchDebounce extends Component {
 
 		console.log('value:', value)
 
-		const text = event.target.value
-
 		//! Використовуємо властивості об'єкта, що обчислюються
 		//! Зберігаємо значення інпутів в state
 		this.setState({
 			[name]: value
 		})
+		//! Логіка фільтрації
+		const filteredArray = data.filter(item => item.title.toLowerCase().includes(value.toLowerCase().trim()))
+		console.log('Відфільтрований масив: ', filteredArray)
+		this.setState({
+			filteredArray
+		})
 	}
 	render() {
-		const { inputValue } = this.state
+		const { inputValue, filteredArray } = this.state
+
+		// filteredArray = data.filter(item => item.title.toLowerCase().includes(value.toLowerCase().trim()))
+
 
 		console.log('----------------------------------------------')
 		console.log('✅Картки json: ', data)
 		console.log('🎯Значення введене в інпут: ', inputValue)
-		// console.log("✅radioButtonValue:", radioButtonValueApp)
+		console.log('Відфільтрований масив: ', filteredArray)
 		console.log('______________________________________________')
 
 		return (
@@ -40,8 +48,8 @@ export class AppSearchDebounce extends Component {
 					onChange={this.handleChange}
 				/>
 				<ul className={css.cards}>
-					{data.map(item => (
-						<li className={css.card}>
+					{filteredArray.map(item => (
+						<li className={css.card} key={item.id}>
 							<h3>{item.title}</h3>
 							<p>{item.body}</p>
 						</li>
