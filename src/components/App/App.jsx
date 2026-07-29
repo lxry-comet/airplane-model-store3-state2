@@ -24,6 +24,8 @@ import css from './App.module.css'
 import { id } from 'date-fns/locale'
 import { CgOpenCollective } from 'react-icons/cg'
 
+import debounce from "lodash.debounce";
+
 //! Приклад початкового сортування на ім'я (за полем name.brief)
 
 const aircrafts2 = aircrafts; //! Це не окрема копія, це копія за посиланям
@@ -228,9 +230,15 @@ export class App extends Component {
 				})
 			}
 	}
+	debouncedSearch = debounce((text) => {
+			console.log("⏰debounce_text", text);
+			this.performSearch(text);
+		}, 1500);
 	handleChangeInputSearchValue = event => {
 		const value = event.target.value;
 		console.log('0️⃣ value: ', value)
+		//! _____________Логіка фільтрації___________
+
 		//! Початкові данні: aircrafts та значення input value
 		
 		//! Потрібно: перебрати масив aircrafts та на кожній ітерації порівняти input value та властивістю name.brief кожного елементу масиву
@@ -254,22 +262,72 @@ export class App extends Component {
 
 
 		//! пошук за ім'ям
+		// const findBrief = this.state.aircraftsArrAfterFiltration.filter(
+		// 	item => item.name.brief.toLowerCase()
+		// 	.startsWith(value.toLowerCase().trim())
+		// );
+		// //! пошук за призвищем 
+		// 	const findNickName = this.state.aircraftsArrAfterFiltration.filter(
+		// 	item => item.name.nickname.toLowerCase()
+		// 	.includes(value.toLowerCase().trim())
+		// );
+		// //! країна виробник
+		// 	const findCountry = this.state.aircraftsArrAfterFiltration.filter(
+		// 	item => item.info.countries.some(country => country.toLowerCase().startsWith(value.toLowerCase().trim()))
+		// );
+		// //! рік випуску
+		// 	const findYear = this.state.aircraftsArrAfterFiltration.filter(
+		// 	item => String(item.info.year).startsWith(value.trim())
+		// );
+		// // console.log("⚡searchInputList: ", searchInputList)
+		
+		// let result = []
+
+		// switch (this.state.radioButtonValue) {
+		// 	case 'brief':
+		// 		result = findBrief
+		// 		break
+		// 	case 'nickname':
+		// 		result = findNickName
+		// 		break
+		// 	case 'country':
+		// 		result = findCountry
+		// 		break
+		// 	case 'year':
+		// 		result = findYear
+		// 		break
+		// 	default:
+		// 		result = ''
+		// 		break
+		// }
+		//! _________________________________________
+
+		// console.log("☺️result: ", result)
+		this.setState({
+			// aircraftsArray: result, 	//!Логіка фільтрації
+    	inputSearchValue: value,
+			// indicesSelectedModels:
+		})
+    this.debouncedSearch(value);
+	} 
+	performSearch = textInput => {
+		//! пошук за ім'ям
 		const findBrief = this.state.aircraftsArrAfterFiltration.filter(
 			item => item.name.brief.toLowerCase()
-			.startsWith(value.toLowerCase().trim())
+			.startsWith(textInput.toLowerCase().trim())
 		);
 		//! пошук за призвищем 
 			const findNickName = this.state.aircraftsArrAfterFiltration.filter(
 			item => item.name.nickname.toLowerCase()
-			.includes(value.toLowerCase().trim())
+			.includes(textInput.toLowerCase().trim())
 		);
 		//! країна виробник
 			const findCountry = this.state.aircraftsArrAfterFiltration.filter(
-			item => item.info.countries.some(country => country.toLowerCase().startsWith(value.toLowerCase().trim()))
+			item => item.info.countries.some(country => country.toLowerCase().startsWith(textInput.toLowerCase().trim()))
 		);
 		//! рік випуску
 			const findYear = this.state.aircraftsArrAfterFiltration.filter(
-			item => String(item.info.year).startsWith(value.trim())
+			item => String(item.info.year).startsWith(textInput.trim())
 		);
 		// console.log("⚡searchInputList: ", searchInputList)
 		
@@ -295,11 +353,11 @@ export class App extends Component {
 		console.log("☺️result: ", result)
 		this.setState({
 			aircraftsArray: result,
-    	inputSearchValue: value,
 			// indicesSelectedModels:
 		})
 		
-	} 
+		
+	}
 	getRadioButtonValue = value => {
 		
 		this.setState({
@@ -308,6 +366,7 @@ export class App extends Component {
 			aircraftsArray: this.state.aircraftsArrAfterFiltration
 		})
 	}
+
 //* Для того щоб функція getActiveId, впливала (перерендирила його) на компонент planesList треба, щоб змінилися пропси які безпосередньо впливать на рендер цього компоненту 
 	
 	render() {
