@@ -30,7 +30,7 @@ import { FcTrademark } from 'react-icons/fc'
 
 //! Реекспорт з папки constants та utils
 import { iconSize, iconColor } from '@/constants'
-import { getManufacturingYears } from '@/utils/'
+import { getManufacturingYears, onHighlightTextProtection } from '@/utils/'
 
 export default function Planes({
 	aircraftId,
@@ -51,7 +51,9 @@ export default function Planes({
 	description,
 	start,
 	end,
-	onActiveId
+	onActiveId,
+	// highlightTextProtection,
+	inputSearchValue
 }) {
 	const different = getManufacturingYears(start, end)
 //! Рахуємо кількість моделей <numberModels> виходячи з наявності фактичної ціни
@@ -99,7 +101,16 @@ export default function Planes({
 			</p>
 			<p className={css.textField}>
 				<GiCeremonialMask className={css.icon} size={iconSize.sm} />
-				Прізвисько: <span className={css.textFieldValue}>{nickname}</span>
+				{/* Прізвисько: <span className={css.textFieldValue}>{nickname}</span> */}
+				Прізвисько: 
+				{/* <span 
+				className={css.textFieldValue}>
+					{highlightTextProtection(nickname, inputSearchValue)}
+				</span>			 */}
+				<span 
+				className={css.textFieldValue}>
+					{onHighlightTextProtection(nickname, inputSearchValue)}
+				</span>
 			</p>
 			<p className={css.textField}>
 				<AiOutlineFlag className={css.icon} size={iconSize.sm} />

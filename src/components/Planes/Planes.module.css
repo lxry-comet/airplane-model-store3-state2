@@ -109,3 +109,10 @@
 .inCart{
 	background-color: #800000;
 }
+.highlight {
+    background-color: yellow;
+    font-weight: bold;
+    color: #000;
+    border-radius: 3px;
+    padding: 0 2px;
+}
