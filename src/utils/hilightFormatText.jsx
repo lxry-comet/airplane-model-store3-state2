@@ -1,6 +1,6 @@
 import css from '@/components/Planes/Planes.module.css'
 
-	export function onHighlightTextProtection (text, keyword, radioButtonValue){
+	export function onHighlightTextProtection (text, keyword, radioButtonValue = "nickname"){
 		if (!keyword) return text
 
 		const escapedKeyword = escapeRegExp(keyword)
