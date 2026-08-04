@@ -18,6 +18,7 @@ import PlanesList from '@/components/PlanesList/PlanesList.jsx'
 // import Section from '../Section/Section.jsx'
 import Section from '@/components/Section/Section.jsx'
 import { Sorter } from '@/components/Sorter/Sorter.jsx'
+import {ScaleSelection} from '@/components/ScaleSelection/ScaleSelection.jsx'
 import css from './App.module.css'
 import { id } from 'date-fns/locale'
 import { CgOpenCollective } from 'react-icons/cg'
@@ -475,6 +476,7 @@ export class App extends Component {
 		console.log('radioButtonValue (✅Sort): ', radioButtonValue)
 		return (
 			<>
+				<ScaleSelection/>
 				<Filter
 					onAll={this.allFiltration}
 					onPlanes={this.planeFiltration}
