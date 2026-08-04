@@ -53,12 +53,15 @@ export default function Planes({
 	end,
 	onActiveId,
 	// highlightTextProtection,
-	inputSearchValue
+	inputSearchValue,
+	radioButtonValuePlanesList
 }) {
 	const different = getManufacturingYears(start, end)
 //! Рахуємо кількість моделей <numberModels> виходячи з наявності фактичної ціни
 	// * NumberModels = сумі значень властивостей об'єкту colorPsice, значення яких є число > 0
   const numberModels = Object.values(modalColorPrice).filter(item => item > 0).length;
+	// console.log("⚡radioButtonValuePlanesList: ", radioButtonValuePlanesList)
+
 		// console.log("🫧countries: ", countries)
 		// console.log("🫧Інверсія 1: ", !1)
 // console.log('numberModels: ', numberModels);
@@ -109,7 +112,10 @@ export default function Planes({
 				</span>			 */}
 				<span 
 				className={css.textFieldValue}>
-					{onHighlightTextProtection(nickname, inputSearchValue)}
+					{radioButtonValuePlanesList === 'nickname'
+					? onHighlightTextProtection(nickname, inputSearchValue)
+					: nickname 
+					}
 				</span>
 			</p>
 			<p className={css.textField}>

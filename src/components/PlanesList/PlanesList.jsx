@@ -16,7 +16,9 @@ function PlanesList({
 	numberOfSelectedModels,
 	searchInputList,
 	highlightTextProtection,
-	inputSearchValue
+	inputSearchValue,
+	radioButtonValueApp
+
 }) {
 			
 	// ! Якщо ми не в кошику то <h2 className={css.invitation}>Нічого не знайдено... ☹️</h2> Якщо в кошику і не має товару то <h2 className={css.invitation}>Додайте товар до кошику... 😉</h2>
@@ -53,6 +55,8 @@ function PlanesList({
 								indicesSelectedModels={indicesSelectedModels}
 								// highlightTextProtection={highlightTextProtection}
 								inputSearchValue={inputSearchValue}
+								radioButtonValuePlanesList={radioButtonValueApp}
+
 							/>
 						</li>
 					))}

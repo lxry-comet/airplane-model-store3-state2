@@ -524,6 +524,8 @@ export class App extends Component {
 						onActiveId={this.getActiveId}
 						// highlightTextProtection={this.highlightTextProtection}
 						inputSearchValue={inputSearchValue}
+						radioButtonValueApp={radioButtonValue}
+
 					/>
 				</Section>
 			</>
