@@ -3,21 +3,33 @@ import css from './ScaleSelection.module.css'
 
 export class ScaleSelection extends Component {
 
+	state = {
+		modalScale: "all"
+	}
 
 	handleChangeModelScale = event => {
+		
+		const {name, value} = event.currentTarget
 		console.log("Зміна масштабу моделі")
+
+		//! Використовуємо властивості об'єкта, що обчислюються
+		//! Зберігаємо значення інпутів в state
+		this.setState({
+			[name]: value
+		})
 	}
 	
 
 
 	render() {
 		// const { } = this.props
-		// const { } = this.state
+		const {modalScale } = this.state
 
 		console.log('----------------------------------------------')
 		// console.log('✅Sort: ', sort)
 		// console.log('🎯inputSearchPlaceholder: ', inputSearchPlaceholder)
 		// console.log("✅radioButtonValue:", radioButtonValueApp)
+		console.log("✅Зміна масштабу моделі", modalScale)
 		console.log('______________________________________________')
 
 		return (
@@ -27,8 +39,8 @@ export class ScaleSelection extends Component {
               {/* масштаб моделі */}
               <select
                 className={css.scaleSelectionSelect}
-                // name=""
-                // value=
+                name="modalScale"
+                value={modalScale}
                 onChange={this.handleChangeModelScale}
                 // disabled={} //! блокування, якщо активна кнопка «Кошик»
               >
