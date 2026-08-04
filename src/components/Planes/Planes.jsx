@@ -112,10 +112,15 @@ export default function Planes({
 				</span>			 */}
 				<span 
 				className={css.textFieldValue}>
-					{radioButtonValuePlanesList === 'nickname'
+
+					 {/* //!Варіант 1 */}
+					{/* {radioButtonValuePlanesList === 'nickname'
 					? onHighlightTextProtection(nickname, inputSearchValue)
 					: nickname 
-					}
+					} */} 
+
+					{/* //!Варіант 2 */}
+					{onHighlightTextProtection(nickname, inputSearchValue, radioButtonValuePlanesList)} 
 				</span>
 			</p>
 			<p className={css.textField}>
