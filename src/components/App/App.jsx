@@ -374,7 +374,8 @@ export class App extends Component {
 		console.log("📗Масив моделей обраного масштабу :", modelsScale);
 		this.setState({
 			modelsSelectedScale: modelsScale,
-			aircraftsArray: modelsScale
+			aircraftsArray: modelsScale,
+			// aircraftsArrAfterFiltration: ?
 		})
 	}
 
