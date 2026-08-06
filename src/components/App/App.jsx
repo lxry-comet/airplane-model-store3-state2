@@ -372,6 +372,10 @@ export class App extends Component {
 	}
 	getModelsSelectedScale = modelsScale => {
 		console.log("📗Масив моделей обраного масштабу :", modelsScale);
+		this.setState({
+			modelsSelectedScale: modelsScale,
+			aircraftsArray: modelsScale
+		})
 	}
 
 	// escapeRegExp = str => {
