@@ -85,7 +85,8 @@ export class App extends Component {
 
 		v: '', //! значення inputSearch
 		radioButtonValue: 'brief', //! значення радіо-кнопки
-		aircraftsArrAfterFiltration: aircrafts //! дубльоване значення aircraftsArr після фільтрації
+		aircraftsArrAfterFiltration: aircrafts, //! дубльоване значення aircraftsArr після фільтрації
+		modelsSelectedScale: aircrafts //! масив моделей обраного масштабу
 	}
 
 	// * 2 При першому завантажені якщо нічого не має  у властивість стейту, то створюємо пустий масив який записуємо у LocalStorage
@@ -369,6 +370,9 @@ export class App extends Component {
 			aircraftsArray: this.state.aircraftsArrAfterFiltration
 		})
 	}
+	getModelsSelectedScale = modelsScale => {
+		console.log("📗Масив моделей обраного масштабу :", modelsScale);
+	}
 
 	// escapeRegExp = str => {
 	// 	return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
@@ -476,7 +480,10 @@ export class App extends Component {
 		console.log('radioButtonValue (✅Sort): ', radioButtonValue)
 		return (
 			<>
-				<ScaleSelection/>
+				<ScaleSelection
+					aircrafts={aircrafts}
+					onGetModelsSelectedScale={this.getModelsSelectedScale}
+				/>
 				<Filter
 					onAll={this.allFiltration}
 					onPlanes={this.planeFiltration}

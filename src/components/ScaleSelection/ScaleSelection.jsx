@@ -2,28 +2,37 @@ import React, { Component } from 'react'
 import css from './ScaleSelection.module.css'
 
 export class ScaleSelection extends Component {
-
+	
 	state = {
 		modalScale: "all"
 	}
 
 	handleChangeModelScale = event => {
-		
+		const {aircrafts} = this.props
+		console.log("⚠️ aircrafts",aircrafts)
 		const {name, value} = event.currentTarget
 		console.log("Зміна масштабу моделі")
-
+		console.log(typeof value)
 		//! Використовуємо властивості об'єкта, що обчислюються
 		//! Зберігаємо значення інпутів в state
 		this.setState({
 			[name]: value
 		})
+		//! Після отримання value, json, Сформувати масив об'єктів в яких scale === value
+		//! Знаходимо масив моделей обраного масштабу
+    const modelsSelectedScale =  
+		value === "all"
+		? aircrafts
+		: aircrafts.filter(aircraft =>
+			aircraft.model.scale.some(item => item === Number(value)))
+		// console.log("🔸modelsSelectedScale: ", modelsSelectedScale)
+		this.props.onGetModelsSelectedScale(modelsSelectedScale)
 	}
-	
-
 
 	render() {
-		// const { } = this.props
+		const {aircrafts} = this.props
 		const {modalScale } = this.state
+		console.log("⚠️ Number All", Number("All"))
 
 		console.log('----------------------------------------------')
 		// console.log('✅Sort: ', sort)
