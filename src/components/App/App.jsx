@@ -117,8 +117,8 @@ export class App extends Component {
 		this.setState({
 			inputSearchValue: '',
 
-			aircraftsArray: aircrafts,
-			aircraftsArrAfterFiltration: aircrafts,
+			aircraftsArray:  this.state.modelsSelectedScale,
+			aircraftsArrAfterFiltration:  this.state.modelsSelectedScale,
 			aircraftTitle: 'Магазин моделей літаків та вертольотів',
 			activeButton: 'allButton',
 			bgColor: 'lightgreen',
@@ -129,7 +129,8 @@ export class App extends Component {
 	planeFiltration = () => {
 		console.log('planeFiltration')
 
-		const planesArray = aircrafts.filter(item => item.aircraftType === 'plane')
+		// const planesArray = aircrafts.filter(item => item.aircraftType === 'plane')
+		const planesArray = this.state.modelsSelectedScale.filter(item => item.aircraftType === 'plane')
 
 		console.log('planesArray', planesArray)
 
@@ -148,7 +149,7 @@ export class App extends Component {
 	biplaneFiltration = () => {
 		console.log('biplaneFiltration')
 
-		const biplanesArray = aircrafts.filter(
+		const biplanesArray =  this.state.modelsSelectedScale.filter(
 			item => item.aircraftType === 'biplane'
 		)
 
@@ -168,7 +169,7 @@ export class App extends Component {
 	}
 	helicopterFiltration = () => {
 		console.log('helicopterFiltration')
-		const helicopterArray = aircrafts.filter(
+		const helicopterArray =  this.state.modelsSelectedScale.filter(
 			item => item.aircraftType === 'helicopter'
 		)
 
@@ -372,13 +373,39 @@ export class App extends Component {
 	}
 	getModelsSelectedScale = modelsScale => {
 		console.log("📗Масив моделей обраного масштабу :", modelsScale);
+		// this.setState({
+		// 	modelsSelectedScale: modelsScale,
+		// 	aircraftsArray: modelsScale.filter(item => item.aircraftType === 'plane'),
+		// 	aircraftsArrAfterFiltration: modelsScale.filter(item => item.aircraftType === 'plane')
+		// })
+	//! Аналізувати натиснуту кнопку фільтрів.  
+
+	
+	console.log("🌐 Кнопка фільтра: ", this.state.activeButton)
+	//! В залежості від значення this.state.activeButton, створюємо 4 різних зеачення aircraftsArray Ta aircraftsArrayAfterFiltration
+	let result = []; //? масив
+	switch(this.state.activeButton){
+		case 'allButton':
+			result = modelsScale;
+			break;
+		case 'planeButton':
+			result = modelsScale.filter(item => item.aircraftType === 'plane')
+			break;
+		case 'biplaneButton':
+			result = modelsScale.filter(item => item.aircraftType === 'biplane')
+			break;
+		case 'helicopterButton':
+			result = modelsScale.filter(item => item.aircraftType === 'helicopter')
+			break;	
+		default:
+			result = [];
+		}
 		this.setState({
 			modelsSelectedScale: modelsScale,
-			aircraftsArray: modelsScale,
-			// aircraftsArrAfterFiltration: ?
+			aircraftsArray: result,
+			aircraftsArrAfterFiltration: result
 		})
 	}
-
 	// escapeRegExp = str => {
 	// 	return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
 	// }
@@ -414,7 +441,8 @@ export class App extends Component {
 			indicesSelectedModels, // масив індексів обраних моделей
 			inputSearchValue, // значення inputSearch
 			aircraftsArrAfterFiltration,
-			radioButtonValue
+			radioButtonValue,
+			modelsSelectedScale
 		} = this.state
 
 		//! [2] Блок обчислювальних дaних
@@ -483,6 +511,8 @@ export class App extends Component {
 		)
 
 		console.log('radioButtonValue (✅Sort): ', radioButtonValue)
+
+		console.log("🔸🔸🔸modelsSelectedScale: ", modelsSelectedScale)
 		return (
 			<>
 				<ScaleSelection
