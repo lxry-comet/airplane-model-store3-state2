@@ -41,3 +41,8 @@
     font-weight: 700;
     color: darkblue;
 }
+.scaleSelectionSelect:disabled{
+    background-color: #7a7a7a;
+    border: 8px solid #5c5c5c;
+    color: #222;
+}

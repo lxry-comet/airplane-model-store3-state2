@@ -518,13 +518,14 @@ export class App extends Component {
 				<ScaleSelection
 					aircrafts={aircrafts}
 					onGetModelsSelectedScale={this.getModelsSelectedScale}
+					isCartButtonOn={activeButton}
 				/>
 				<Filter
 					onAll={this.allFiltration}
 					onPlanes={this.planeFiltration}
 					onBiplanes={this.biplaneFiltration}
 					onHelicopters={this.helicopterFiltration}
-					buttonActive={this.state.activeButton}
+					buttonActive={activeButton}
 					onCart={this.cartFiltration}
 					numberOfSelectedModels={numberOfSelectedModels}
 				/>

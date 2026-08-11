@@ -30,7 +30,7 @@ export class ScaleSelection extends Component {
 	}
 
 	render() {
-		const {aircrafts} = this.props
+		const {isCartButtonOn} = this.props
 		const {modalScale } = this.state
 		console.log("⚠️ Number All", Number("All"))
 
@@ -51,7 +51,7 @@ export class ScaleSelection extends Component {
                 name="modalScale"
                 value={modalScale}
                 onChange={this.handleChangeModelScale}
-                // disabled={} //! блокування, якщо активна кнопка «Кошик»
+                disabled={isCartButtonOn === 'cartButton'} //! блокування, якщо активна кнопка «Кошик»
               >
                 <option className={css.scaleSelectionOption} value="all">Всі</option>
                 <option className={css.scaleSelectionOption} value="200">1:200</option>
