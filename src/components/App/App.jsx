@@ -83,7 +83,7 @@ export class App extends Component {
 		indicesSelectedModels:
 			JSON.parse(localStorage.getItem('indicesSelectedModels')) || [],
 
-		v: '', //! значення inputSearch
+		inputSearchValue: '', //! значення inputSearch
 		radioButtonValue: 'brief', //! значення радіо-кнопки
 		aircraftsArrAfterFiltration: aircrafts, //! дубльоване значення aircraftsArr після фільтрації
 		modelsSelectedScale: aircrafts //! масив моделей обраного масштабу
